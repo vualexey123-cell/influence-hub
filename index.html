@@ -67,7 +67,8 @@
   <header style="position:sticky;top:0;z-index:50;background:rgba(245,239,228,0.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #E2D8C6">
     <div style="max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:28px">
       <a href="#" style="display:flex;align-items:center;margin-right:auto" aria-label="Influence Hub">
-        <span class="wordmark" style="font-size:22px">Influence Hub</span>
+        <img src="./assets/influence-hub-logo.png" alt="Influence Hub" style="height:32px;width:auto;display:block;mix-blend-mode:multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+        <span class="wordmark" style="font-size:22px;display:none">Influence Hub</span>
       </a>
       <nav class="main-nav" style="display:flex;gap:26px;font-size:15px">
         <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
@@ -167,7 +168,7 @@
   </section>
 
   <section style="position:relative;overflow:hidden;background:#1B1A17;min-height:340px;display:grid;place-items:center;border-top:1px solid #2B2924;border-bottom:1px solid #2B2924">
-    <video id="bandVideo" autoplay loop muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
+    <video id="bandVideo" autoplay loop muted playsinline preload="auto" poster="./assets/band-poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
       <source src="./assets/band-loop.mp4" type="video/mp4">
     </video>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,23,0.55),rgba(27,26,23,0.3) 45%,rgba(27,26,23,0.7))"></div>
@@ -282,7 +283,8 @@
         <a href="#price" class="footlink" data-i18n="navPrice"></a>
         <a href="#faq" class="footlink" data-i18n="navFaq"></a>
       </div>
-      <span class="footer-wordmark">Influence Hub</span>
+      <img src="./assets/influence-hub-logo.png" alt="Influence Hub" style="width:100%;height:auto;display:block;filter:invert(1) sepia(0.16) saturate(0.7) brightness(1.02);mix-blend-mode:screen" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="footer-wordmark" style="display:none">Influence Hub</span>
       <div class="foot-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px;padding-top:22px;font-size:13px;line-height:1.55;color:#9A9288">
         <span data-i18n="copyright"></span>
         <span data-i18n="disclaimer"></span>
