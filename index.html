@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Influence Hub — local food creators, on autopilot</title>
+<meta name="description" content="We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.">
+<meta property="og:title" content="Influence Hub">
+<meta property="og:description" content="Local food creators eating at your place every month — sourcing, scheduling and reporting handled for you.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #F5EFE4; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:0.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E"); }
+  * { box-sizing: border-box; }
+  a { color: #C13F22; text-decoration: none; }
+  a:hover { color: #1B1A17; }
+  input, textarea, button { font: inherit; }
+  ::selection { background: #F0C4B4; }
+
+  /* wordmark logo */
+  .wordmark { font-family:'Unbounded',Georgia,serif; font-weight:800; letter-spacing:-0.03em; color:#1B1A17; }
+  .footer-wordmark { font-family:'Unbounded',Georgia,serif; font-weight:800; letter-spacing:-0.04em; font-size:clamp(38px,9vw,116px); line-height:1; color:#2E2B26; display:block; width:100%; margin:6px 0; }
+
+  /* interactive states (were style-hover/style-focus in the source) */
+  .btn-primary { background:#C13F22; color:#FFF9F2; }
+  .btn-primary:hover { background:#9E3018; color:#FFF9F2; }
+  .btn-secondary:hover { background:#EDE4D5; color:#1B1A17; }
+  .btn-dark-outline:hover { background:#1B1A17; color:#FBF6EC; }
+  .nav-link { color:#5F594E; }
+  .nav-link:hover { color:#1B1A17; }
+  .card { transition:transform 240ms cubic-bezier(.2,.8,.2,1), box-shadow 240ms ease; }
+  .card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.45); }
+  .plan-card { transition:transform 220ms ease, box-shadow 220ms ease; }
+  .plan-card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.55); }
+  .faq-btn:hover { color:#C13F22 !important; }
+  .input:focus { border-color:#C13F22; outline:none; }
+  .footlink { color:#B5AC9F; }
+  .footlink:hover { color:#E8724F; }
+
+  .lang-btn { border:0; cursor:pointer; padding:7px 12px; border-radius:999px; font-size:13px; font-weight:600; letter-spacing:0.04em; background:transparent; color:#7A7369; }
+  .lang-btn.active { background:#1B1A17; color:#F5EFE4; }
+
+  .hero-pill { display:inline-block; vertical-align:-0.24em; width:2.5em; height:1.1em; border-radius:999px; overflow:hidden; position:relative; background:#E7DDCB; margin:0 0.12em; box-shadow:inset 0 0 0 1px rgba(27,26,23,0.08); }
+  .hero-pill img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 32%; display:block; }
+
+  .hidden { display:none !important; }
+
+  /* mobile */
+  @media (max-width: 760px) {
+    .main-nav { display:none !important; }
+    .sec-grid { grid-template-columns:1fr !important; gap:32px !important; }
+    .how-grid { grid-template-columns:1fr !important; }
+    .how-card { grid-column:auto !important; }
+    .foot-grid { grid-template-columns:1fr !important; }
+    .report-card { transform:none !important; }
+    .demo-form { transform:none !important; }
+  }
+</style>
+</head>
+<body>
+<div style="position:relative;z-index:2;background:#F5EFE4;color:#1B1A17;font-family:'Onest',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(245,239,228,0.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #E2D8C6">
+    <div style="max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:28px">
+      <a href="#" style="display:flex;align-items:center;margin-right:auto" aria-label="Influence Hub">
+        <span class="wordmark" style="font-size:22px">Influence Hub</span>
+      </a>
+      <nav class="main-nav" style="display:flex;gap:26px;font-size:15px">
+        <a href="#how" class="nav-link" data-i18n="navHow">How it works</a>
+        <a href="#report" class="nav-link" data-i18n="navReport">Reporting</a>
+        <a href="#price" class="nav-link" data-i18n="navPrice">Pricing</a>
+        <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:2px;border:1px solid #D6C9B2;border-radius:999px;padding:3px;flex-shrink:0">
+        <button type="button" id="btnEn" class="lang-btn">EN</button>
+        <button type="button" id="btnRu" class="lang-btn">RU</button>
+      </div>
+      <a href="#demo" class="btn-primary" style="padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap" data-i18n="cta">Book a demo</a>
+    </div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;border-bottom:1px solid #E2D8C6">
+    <div style="position:relative;max-width:1000px;margin:0 auto;padding:104px 32px 112px;text-align:center;min-width:0">
+      <h1 id="heroTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(38px,4.4vw,63px);line-height:1.03;letter-spacing:-0.025em;margin:0 0 24px;text-wrap:pretty"></h1>
+      <p id="heroLead" style="font-size:21px;line-height:1.5;color:#4A453C;margin:0 auto 36px;max-width:640px;text-wrap:pretty"></p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center">
+        <a href="#demo" class="btn-primary" style="padding:16px 28px;border-radius:999px;font-weight:600;font-size:17px" data-i18n="cta">Book a demo</a>
+        <a href="#how" class="btn-secondary" style="padding:16px 22px;border-radius:999px;font-weight:600;font-size:17px;border:1px solid #D6C9B2;color:#1B1A17" data-i18n="ctaSecondary">See how it works first</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;border-top:1px solid #E2D8C6;border-bottom:1px solid #E2D8C6;background:#F0E7D8">
+    <img class="creators-bg" src="./assets/creators-bg.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;filter:blur(2.5px) saturate(1.05);transform:scale(1.02);pointer-events:none;user-select:none">
+    <div style="position:absolute;inset:0;background:linear-gradient(260deg,rgba(240,231,216,0.92) 0%,rgba(240,231,216,0.82) 32%,rgba(240,231,216,0.5) 66%,rgba(240,231,216,0.38) 100%);pointer-events:none"></div>
+    <div class="sec-grid" style="position:relative;max-width:1180px;margin:0 auto;padding:72px 32px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:56px">
+      <div style="grid-column:2;grid-row:1">
+        <h2 data-i18n="flowTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(27px,2.8vw,38px);line-height:1.1;letter-spacing:-0.02em;margin:0 0 14px"></h2>
+        <p data-i18n="flowLead" style="color:#4A453C;margin:0;font-size:17px;line-height:1.6"></p>
+      </div>
+      <div id="flowRows" style="grid-column:1;grid-row:1;display:grid;gap:2px;background:#DFD4C0;border-radius:16px;overflow:hidden;border:1px solid #DFD4C0;box-shadow:0 26px 50px -28px rgba(27,26,23,0.6)"></div>
+    </div>
+  </section>
+
+  <section id="how" style="max-width:1180px;margin:0 auto;padding:88px 32px 20px">
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:56px;align-items:start;margin-bottom:48px">
+      <h2 data-i18n="howTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(30px,3.2vw,44px);line-height:1.05;letter-spacing:-0.025em;margin:0"></h2>
+      <div style="max-width:560px">
+        <p data-i18n="howLead" style="color:#4A453C;font-size:19px;margin:0 0 14px"></p>
+        <p data-i18n="howNote" style="margin:0;font-family:'Unbounded',Georgia,serif;font-size:18px;color:#C13F22"></p>
+      </div>
+    </div>
+    <div class="how-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px">
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#1B1A17;border:1px solid #1B1A17;color:#F5EFE4">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#E8724F">01</span><span data-i18n="s1Label" style="font-size:13px;color:#8E877C;letter-spacing:0.04em;text-transform:uppercase"></span></div>
+        <h3 data-i18n="s1Title" style="font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px;color:#FFF6EE"></h3>
+        <p data-i18n="s1Body" style="margin:0;font-size:17px;line-height:1.62;color:#CFC7BA"></p>
+      </div>
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#FBF6EC;border:1px solid #E2D8C6">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">02</span><span data-i18n="s2Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
+        <h3 data-i18n="s2Title" style="font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
+        <p data-i18n="s2Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
+        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px">
+          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@ne.pro.edu</span>
+          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@zavtrak.tut</span>
+          <span style="background:#F5EFE4;border:1px dashed #D6C9B2;border-radius:999px;padding:8px 14px;font-size:15px;color:#9A9288">@promo.kazan — <span data-i18n="removed"></span></span>
+        </div>
+      </div>
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#F0E7D8;border:1px solid #E2D8C6">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">03</span><span data-i18n="s3Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
+        <h3 data-i18n="s3Title" style="font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
+        <p data-i18n="s3Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
+        <div id="howSlots" style="margin-top:auto;display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#FBF6EC;border:1px solid #E2D8C6">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">04</span><span data-i18n="s4Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
+        <h3 data-i18n="s4Title" style="font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
+        <p data-i18n="s4Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
+        <a href="#report" data-i18n="s4Link" style="margin-top:auto;font-weight:600;font-size:16px"></a>
+      </div>
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 2;background:#C13F22;border:1px solid #C13F22;color:#FFF6EE;justify-content:center;gap:10px">
+        <span data-i18n="swapLabel" style="font-size:13px;color:#F6CDBD;letter-spacing:0.04em;text-transform:uppercase"></span>
+        <p data-i18n="swapTitle" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:19px;line-height:1.34;letter-spacing:-0.02em"></p>
+      </div>
+
+      <div class="how-card card" style="border-radius:20px;padding:30px;grid-column:span 4;background:#FBF6EC;border:1px solid #E2D8C6;display:flex;flex-direction:row;align-items:center;gap:26px;justify-content:space-between">
+        <div>
+          <p data-i18n="statLabel1" style="margin:0 0 8px;font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></p>
+          <p data-i18n="statValue1" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-0.03em"></p>
+        </div>
+        <div style="text-align:right;border-left:1px solid #E2D8C6;padding-left:26px;flex-shrink:0">
+          <p data-i18n="statLabel2" style="margin:0 0 8px;font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></p>
+          <p data-i18n="statValue2" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-0.03em;color:#C13F22"></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;background:#1B1A17;min-height:340px;display:grid;place-items:center;border-top:1px solid #2B2924;border-bottom:1px solid #2B2924">
+    <video id="bandVideo" autoplay loop muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
+      <source src="./assets/band-loop.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,23,0.55),rgba(27,26,23,0.3) 45%,rgba(27,26,23,0.7))"></div>
+    <p id="bandText" style="position:relative;margin:0;padding:72px 40px;max-width:1280px;text-align:center;font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:1.12;letter-spacing:-0.025em;color:#FFF6EE;text-shadow:0 2px 24px rgba(0,0,0,0.45);text-wrap:pretty"></p>
+  </section>
+
+  <section id="report" style="background:#1B1A17;color:#F5EFE4">
+    <div class="sec-grid" style="max-width:1180px;margin:0 auto;padding:88px 32px;display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:64px;align-items:center">
+      <div>
+        <h2 data-i18n="reportTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(29px,3vw,42px);line-height:1.06;letter-spacing:-0.025em;margin:0 0 20px"></h2>
+        <p data-i18n="reportLead" style="color:#B5AC9F;font-size:19px;margin:0 0 26px;max-width:480px"></p>
+        <ul id="reportBullets" style="list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:17px;color:#E4DCCE"></ul>
+      </div>
+      <div class="report-card" style="background:#FBF6EC;color:#1B1A17;border-radius:18px;padding:30px 32px;transform:rotate(0.5deg);box-shadow:0 24px 46px -28px rgba(0,0,0,0.7)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #E2D8C6;padding-bottom:16px;margin-bottom:6px;gap:16px">
+          <span data-i18n="reportCardTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:19px;letter-spacing:-0.02em"></span>
+          <span data-i18n="reportCardVisits" style="font-size:14px;color:#7A7369;white-space:nowrap"></span>
+        </div>
+        <div style="display:grid;gap:0">
+          <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,0.8fr) minmax(0,0.8fr);padding:13px 0;border-bottom:1px solid #EFE6D6;font-size:14px;color:#7A7369">
+            <span data-i18n="thCreator"></span><span data-i18n="thFormat"></span><span data-i18n="thReach" style="text-align:right"></span>
+          </div>
+          <div id="reportRows"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:88px 32px">
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,0.35fr) minmax(0,1fr);gap:48px;align-items:start">
+      <div style="min-width:0;background:#FFFDF9;padding:10px 10px 0;border-radius:5px;box-shadow:0 18px 34px -24px rgba(27,26,23,0.5);transform:rotate(-1.6deg)">
+        <div style="position:relative;height:300px;min-width:0;overflow:hidden">
+          <img src="https://images.unsplash.com/photo-1587337657836-5084db88308c?w=700&h=900&fit=crop&crop=faces,edges&auto=format&q=72" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <p data-i18n="photoCaption" style="margin:0;font-size:15px;color:#6B655C;padding:11px 4px 13px"></p>
+      </div>
+      <div>
+        <span style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:64px;line-height:0.6;color:#E8B49B;display:block;margin-bottom:14px">&ldquo;</span>
+        <blockquote id="quote" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:500;font-size:clamp(23px,2.3vw,32px);line-height:1.28;letter-spacing:-0.015em;text-wrap:pretty"></blockquote>
+        <p data-i18n="quoteAuthor" style="margin:22px 0 0;font-size:16px;color:#5F594E"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="price" style="border-top:1px solid #E2D8C6;background:#F0E7D8">
+    <div style="max-width:1180px;margin:0 auto;padding:84px 32px">
+      <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:56px;align-items:start;margin-bottom:44px">
+        <h2 data-i18n="priceTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(29px,3vw,42px);line-height:1.06;letter-spacing:-0.025em;margin:0"></h2>
+        <p data-i18n="priceLead" style="color:#4A453C;font-size:19px;margin:0;max-width:520px"></p>
+      </div>
+      <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
+        <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:18px;padding:32px">
+          <p data-i18n="plan1Label" style="margin:0 0 8px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em"></p>
+          <p id="plan1Price" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(26px,2.4vw,32px);letter-spacing:-0.02em;margin:0 0 4px;white-space:nowrap"></p>
+          <p data-i18n="plan1Body" style="margin:0 0 20px;color:#5F594E;font-size:16px"></p>
+          <a href="#demo" class="btn-primary" data-i18n="ctaPlan" style="display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+        </div>
+        <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:18px;padding:32px">
+          <p data-i18n="plan2Label" style="margin:0 0 8px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em"></p>
+          <p id="plan2Price" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(26px,2.4vw,32px);letter-spacing:-0.02em;margin:0 0 4px;white-space:nowrap"></p>
+          <p data-i18n="plan2Body" style="margin:0 0 20px;color:#5F594E;font-size:16px"></p>
+          <a href="#demo" class="btn-dark-outline" data-i18n="ctaPlan" style="display:inline-block;border:1px solid #1B1A17;color:#1B1A17;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+        </div>
+      </div>
+      <p data-i18n="priceNote" style="margin:22px 0 0;font-family:'Unbounded',Georgia,serif;font-size:18px;color:#C13F22;max-width:640px"></p>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width:1180px;margin:0 auto;padding:88px 32px">
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);gap:56px;align-items:start">
+      <h2 data-i18n="faqTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(28px,2.9vw,40px);line-height:1.06;letter-spacing:-0.025em;margin:0"></h2>
+      <div id="faqList" style="display:grid;gap:0;border-top:1px solid #D6C9B2"></div>
+    </div>
+  </section>
+
+  <section id="demo" style="background:#C13F22;color:#FFF9F2">
+    <div class="sec-grid" style="max-width:1180px;margin:0 auto;padding:84px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,0.85fr);gap:64px;align-items:start">
+      <div>
+        <h2 data-i18n="demoTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:clamp(32px,3.3vw,46px);line-height:1.04;letter-spacing:-0.025em;margin:0 0 18px;text-wrap:pretty"></h2>
+        <p data-i18n="demoLead" style="font-size:19px;line-height:1.5;margin:0 0 26px;color:#FBE3D8;max-width:480px"></p>
+        <p data-i18n="demoNote" style="margin:0;font-size:16px;color:#F6CDBD"></p>
+      </div>
+      <div id="sentBlock" class="hidden" style="background:#FBF6EC;color:#1B1A17;border-radius:18px;padding:36px">
+        <p id="sentTitle" style="font-family:'Unbounded',Georgia,serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0 0 10px"></p>
+        <p id="sentBody" style="margin:0;color:#4A453C;font-size:17px"></p>
+      </div>
+      <form id="demoForm" class="demo-form" style="background:#FBF6EC;color:#1B1A17;border-radius:18px;padding:30px;display:grid;gap:14px;box-shadow:0 26px 50px -30px rgba(0,0,0,0.55);transform:rotate(-0.4deg)">
+        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fVenue"></span>
+          <input class="input" name="place" required data-i18n-ph="pVenue" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+        </label>
+        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fCity"></span>
+          <input class="input" name="city" required data-i18n-ph="pCity" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+        </label>
+        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fName"></span>
+          <input class="input" name="name" required data-i18n-ph="pName" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+        </label>
+        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fContact"></span>
+          <input class="input" name="contact" required data-i18n-ph="pContact" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+        </label>
+        <button type="submit" class="btn-primary" data-i18n="cta" style="margin-top:6px;border:0;border-radius:999px;padding:15px 24px;font-size:17px;font-weight:600;cursor:pointer"></button>
+        <p id="formError" class="hidden" style="margin:0;font-size:14px;color:#9E3018"></p>
+        <p data-i18n="formNote" style="margin:2px 0 0;font-size:14px;color:#7A7369"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background:#1B1A17;color:#F5EFE4;border-top:1px solid #2B2924">
+    <div style="max-width:1180px;margin:0 auto;padding:52px 32px 40px">
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;font-size:15px;padding-bottom:34px;border-bottom:1px solid #2B2924;margin-bottom:30px">
+        <a href="mailto:hi@influencehub.ru" class="footlink" style="color:#E4DCCE;margin-right:auto">hi@influencehub.ru</a>
+        <a href="#demo" class="footlink">Telegram</a>
+        <a href="#price" class="footlink" data-i18n="navPrice"></a>
+        <a href="#faq" class="footlink" data-i18n="navFaq"></a>
+      </div>
+      <span class="footer-wordmark">Influence Hub</span>
+      <div class="foot-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px;padding-top:22px;font-size:13px;line-height:1.55;color:#9A9288">
+        <span data-i18n="copyright"></span>
+        <span data-i18n="disclaimer"></span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* ===== Formspree endpoint =====
+   Замени REPLACE_ME на свой ID из Formspree (напр. https://formspree.io/f/abcdwxyz).
+   Пока стоит REPLACE_ME — форма работает в демо-режиме (показывает «спасибо», письма не уходят). */
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_ME";
+
+const COPY = {
+  en: {
+    navHow: "How it works", navReport: "Reporting", navPrice: "Pricing", navFaq: "FAQ",
+    cta: "Book a demo", ctaSecondary: "See how it works first", ctaPlan: "Discuss on a demo",
+    heroA: "Every month", heroB: "people who know how to talk about it eat at", heroAccent: "your place",
+    heroLead: "We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.",
+    flowTitle: "New creators every month",
+    flowLead: "Not a one-off campaign but a steady flow: the line-up refreshes, reach compounds, and none of it needs your time.",
+    flowRows: [
+      { t: "5 new creators each month", d: "A fresh line-up of local creators every month, not the same few faces." },
+      { t: "7–10 new videos each month", d: "Real content about your place, shot and published within the month." },
+      { t: "Local reach that compounds", d: "Posts do not disappear: the neighbourhood gets to know you without an ad budget." },
+      { t: "Visits on autopilot, fully hands off", d: "Sourcing, messaging and scheduling are ours. You just host the guests." }
+    ],
+    howTitle: "How it works with us",
+    howLead: "Four steps. Three of them are on our side, and we never ask you to approve things in group chats.",
+    howNote: "Only the first step needs you — after that you simply watch.",
+    s1Label: "5-minute brief", s1Title: "You fill in a short brief about your venue — once",
+    s1Body: "To work well we need to know your venue, your kitchen, the dates creators can visit, and your terms.",
+    s2Label: "this month’s line-up", s2Title: "We build the line-up and show you the list",
+    s2Body: "From your city, with a real audience. Crossing someone off is perfectly fine.", removed: "removed",
+    s3Label: "schedule", s3Title: "We spread visits across the days",
+    s3Body: "Your host gets the list in advance. The kitchen never faces five shoots on one Friday.",
+    slots: ["Thu 12 · 7:40pm", "Sat 14 · breakfast", "Tue 17 · lunch", "+6"],
+    s4Label: "end of month", s4Title: "We send a single report",
+    s4Body: "What went out, how many people saw it, what they saved — one file, no screenshots in chat.",
+    s4Link: "See what it looks like →",
+    swapLabel: "a no-show is not your problem", swapTitle: "We replace the creator the same month, at no extra cost",
+    statLabel1: "Your involvement per month", statValue1: "5 minutes on a brief",
+    statLabel2: "Messages with creators", statValue2: "zero",
+    bandA: "Creators recommend", bandLocal: "locally", bandB: "— business grows", bandGlobal: "globally",
+    reportTitle: "You get a transparent report at the end of every month, or whenever you ask",
+    reportLead: "One document at the end of the month: who came, what they published, how many people saw it.",
+    reportBullets: ["Links to every post — live, not screenshots", "Reach and saves for each creator", "What worked and what did not, in plain language", "A plan for next month based on it"],
+    reportCardTitle: "August · Polka Coffee", reportCardVisits: "9 visits",
+    thCreator: "Creator", thFormat: "Format", thReach: "Reach",
+    reportRows: [
+      { who: "@ne.pro.edu", fmt: "Reels", reach: "31,400" },
+      { who: "@zavtrak.tut", fmt: "Post", reach: "12,780" },
+      { who: "@kofe.i.ryadom", fmt: "Stories ×4", reach: "8,210" },
+      { who: "6 more creators", fmt: "—", reach: "41,060" }
+    ],
+    photoCaption: "Marina, second shift",
+    quote: "“I used to spend a whole evening messaging people and end up with one story. Now I just see who is coming on Thursday and read the report at the end of the month. May brought more new guests than paid ads did.”",
+    quoteAuthor: "Marina Kovaleva — manager, Polka Coffee, Kazan",
+    priceTitle: "What it costs",
+    priceLead: "A fixed monthly subscription. Creator fees, coordination and the report are included — nothing to top up along the way.",
+    plan1Label: "Single venue", plan1Price: "from ₽45,000", perMonth: " / month",
+    plan1Body: "6–10 creators a month, scheduling, reporting, replacements for no-shows.",
+    plan2Label: "Local chain, 2–6 locations", plan2Price: "from ₽78,000",
+    plan2Body: "Different line-ups per location and neighbourhood, one combined report, one manager for everything.",
+    priceNote: "The first month is a trial: if you do not like the line-up, we stop after it — no renewal conversations.",
+    faqTitle: "Questions we get in the first five minutes",
+    demoTitle: "Let us see which creators in your city already eat at your place",
+    demoLead: "On the demo we show real profiles from your city, last month’s schedule for a similar venue, and a full report. No decision needed on the call.",
+    demoNote: "We reply within a day. We write instead of calling ten times.",
+    sentTitle: "Got it — your request is in",
+    sentBody: "We will write within a day and send a couple of profiles from your city, so the call has something concrete in it.",
+    fVenue: "Venue", pVenue: "Polka Coffee", fCity: "City", pCity: "Kazan",
+    fName: "Your name", pName: "Marina", fContact: "Phone or Telegram", pContact: "@marina or +1…",
+    formNote: "No newsletters, no selling your data. One message, on the point.",
+    formError: "Something went wrong. Please write to hi@influencehub.ru.",
+    copyright: "2026 © Influence Hub, all rights reserved",
+    disclaimer: "Influence Hub organises visits by local content creators. Reach figures and visit counts shown here are examples, not an offer or a guarantee of results.",
+    faq: [
+      ["We do not want an ad tone. Will creators label it as a sponsored post?", "No. We work with people who shoot food for their own audience and ask them to speak in their own words. The partnership disclosure is there as required by law, but the writing stays human."],
+      ["What if a creator comes, eats and posts nothing?", "That is on us: terms are fixed before the visit and we verify the post. If nothing goes out, we replace the creator the same month at no extra cost."],
+      ["How much time does this take from a manager?", "Five minutes on the brief up front, plus a weekly visit list for your host. Beyond that you are involved only if you want to be."],
+      ["How do we know it brought guests, not just reach?", "Alongside reach the report tracks what actually moved: map clicks, bookings, demand for specific dishes. If nothing moved, we say so plainly."],
+      ["We are a small coffee shop in a residential area. Is it worth it?", "Usually yes: local creators work better for a neighbourhood than city-wide accounts. If your city lacks the right people, we will tell you on the demo and not take your money."],
+      ["Contract, invoice, closing documents?", "We work under a contract with your company, and send the invoice and paperwork at the start of the month. Creator fees are paid by us."]
+    ]
+  },
+  ru: {
+    navHow: "Как работает", navReport: "Отчёт", navPrice: "Сколько стоит", navFaq: "Вопросы",
+    cta: "Записаться на демо", ctaSecondary: "Сначала посмотреть, как это устроено", ctaPlan: "Обсудить на демо",
+    heroA: "Каждый месяц", heroB: "у вас едят люди, которые", heroAccent: "умеют про это рассказать",
+    heroLead: "Мы находим локальных авторов про еду, договариваемся, разводим их по дням и присылаем один понятный отчёт. С вас — стол и пара слов о кухне.",
+    flowTitle: "Новые креаторы каждый месяц",
+    flowLead: "Не разовая акция, а поток: состав обновляется, охват накапливается, а вы в этом не участвуете.",
+    flowRows: [
+      { t: "5 новых авторов каждый месяц", d: "Каждый месяц — новый состав локальных креаторов, а не одни и те же лица." },
+      { t: "7–10 новых видео каждый месяц", d: "Живой контент про ваше заведение, снятый и опубликованный за месяц." },
+      { t: "Локальный охват, который накапливается", d: "Публикации не исчезают: район постепенно узнаёт вас без бюджета на рекламу." },
+      { t: "Визиты на автопилоте, без вашего участия", d: "Подбор, переписка и расписание — на нас. Вы только принимаете гостей." }
+    ],
+    howTitle: "Как это устроено у нас",
+    howLead: "Четыре шага. Три из них — на нашей стороне, и мы не просим вас ничего согласовывать в чатах.",
+    howNote: "Единственный этап с вашим участием — дальше вы просто наблюдаете.",
+    s1Label: "бриф на 5 минут", s1Title: "Заполняете короткий бриф о заведении — один раз",
+    s1Body: "Для эффективной работы нам необходимо узнать о вашем заведении, кухне, датах посещения ресторана для креаторов и условиях.",
+    s2Label: "состав месяца", s2Title: "Собираем авторов и показываем вам список",
+    s2Body: "Из вашего города, с живой аудиторией. Кого-то вычеркнуть — нормально.", removed: "вычеркнули",
+    s3Label: "расписание", s3Title: "Разводим визиты по дням",
+    s3Body: "Хостес получает список заранее. Кухня не встаёт в очередь из пяти съёмок в пятницу.",
+    slots: ["чт 12 · 19:40", "сб 14 · завтрак", "вт 17 · обед", "+6"],
+    s4Label: "конец месяца", s4Title: "Присылаем один отчёт",
+    s4Body: "Что вышло, сколько людей увидело, что сохраняли — одним файлом, без пересылки скриншотов.",
+    s4Link: "Посмотреть, как он выглядит →",
+    swapLabel: "не пришёл — не ваша проблема", swapTitle: "Меняем автора в том же месяце, без доплаты",
+    statLabel1: "Ваше участие за весь месяц", statValue1: "5 минут на бриф",
+    statLabel2: "Переписок с авторами", statValue2: "ноль",
+    bandA: "Креаторы советуют", bandLocal: "локально", bandB: "— бизнес растёт", bandGlobal: "глобально",
+    reportTitle: "Вы получаете прозрачный отчёт в конце каждого месяца или по запросу",
+    reportLead: "Один документ в конце месяца: кто пришёл, что опубликовал, сколько людей это увидело.",
+    reportBullets: ["Ссылки на все публикации, живые, не скриншоты", "Охваты и сохранения по каждому автору", "Что сработало, что нет — человеческим языком", "План на следующий месяц с учётом этого"],
+    reportCardTitle: "Август · кофейня «Полка»", reportCardVisits: "9 визитов",
+    thCreator: "Автор", thFormat: "Формат", thReach: "Охват",
+    reportRows: [
+      { who: "@ne.pro.edu", fmt: "Reels", reach: "31 400" },
+      { who: "@zavtrak.tut", fmt: "Пост", reach: "12 780" },
+      { who: "@kofe.i.ryadom", fmt: "Сторис ×4", reach: "8 210" },
+      { who: "ещё 6 авторов", fmt: "—", reach: "41 060" }
+    ],
+    photoCaption: "Марина, вторая смена",
+    quote: "«Раньше я тратила вечер на переписку и получала одну сторис. Теперь просто вижу в расписании, кто придёт в четверг, и в конце месяца читаю отчёт. За май пришло больше новых гостей, чем от таргета.»",
+    quoteAuthor: "Марина Ковалёва — управляющая кофейни «Полка», Казань",
+    priceTitle: "Сколько это стоит",
+    priceLead: "Фиксированная подписка за месяц. Гонорары авторов, согласования и отчёт уже внутри — доплачивать по ходу не придётся.",
+    plan1Label: "Одно заведение", plan1Price: "от 45 000 ₽", perMonth: " / месяц",
+    plan1Body: "6–10 авторов в месяц, расписание, отчёт, замена тех, кто не пришёл.",
+    plan2Label: "Локальная сеть, 2–6 точек", plan2Price: "от 78 000 ₽",
+    plan2Body: "Разные составы под точки и районы, сводный отчёт по сети, один менеджер на всё.",
+    priceNote: "Первый месяц — пробный: не понравится состав авторов, останавливаемся после него без разговоров про «продление».",
+    faqTitle: "Вопросы, которые нам задают в первые пять минут",
+    demoTitle: "Посмотрим, кто из авторов в вашем городе уже ходит к вам обедать",
+    demoLead: "На демо покажем реальные профили из вашего города, расписание прошлого месяца у похожего заведения и отчёт целиком. Решать ничего сразу не нужно.",
+    demoNote: "Отвечаем в течение дня. Не звоним по десять раз — пишем.",
+    sentTitle: "Готово, заявка у нас",
+    sentBody: "Напишем в течение дня и сразу пришлём пару профилей из вашего города — чтобы было о чём говорить на созвоне.",
+    fVenue: "Заведение", pVenue: "Кофейня «Полка»", fCity: "Город", pCity: "Казань",
+    fName: "Как к вам обращаться", pName: "Марина", fContact: "Телефон или Telegram", pContact: "@marina или +7…",
+    formNote: "Ничего не рассылаем и не продаём базу. Пишем один раз по делу.",
+    formError: "Что-то пошло не так. Напишите на hi@influencehub.ru.",
+    copyright: "2026 © Influence Hub, все права защищены",
+    disclaimer: "Influence Hub — сервис по организации визитов локальных авторов контента. Указанные охваты и число визитов приведены как пример и не являются публичной офертой или гарантией результата.",
+    faq: [
+      ["Мы не хотим рекламный тон. Авторы будут писать «спонсорский пост»?", "Нет. Мы работаем с теми, кто снимает еду для своей аудитории, и просим рассказывать своими словами. Отметку о сотрудничестве ставим по закону, но текст остаётся человеческим."],
+      ["А если автор пришёл, поел и ничего не выложил?", "Это наша зона ответственности: условия зафиксированы до визита, публикацию проверяем мы. Не вышло — заменяем автора в этом же месяце, без доплаты."],
+      ["Сколько времени это займёт у управляющего?", "Пять минут на бриф в начале и список визитов на неделю для хостес. Дальше вы участвуете только если сами хотите."],
+      ["Как понять, что это дало гостей, а не просто охваты?", "В отчёте кроме охватов смотрим на то, что реально сдвинулось: переходы на карты, брони, спрос на конкретные позиции. Если сдвига нет — говорим об этом прямо."],
+      ["У нас маленькая кофейня в спальном районе. Есть смысл?", "Обычно да: локальные авторы работают на район лучше, чем городские аккаунты. Если в вашем городе людей под ваш формат мало — скажем на демо и не возьмём деньги."],
+      ["Договор, счёт, закрывающие документы?", "Работаем по договору с юрлицом или ИП, счёт и акты присылаем в начале месяца. Гонорары авторам платим сами."]
+    ]
+  }
+};
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let lang = "en";
+let openFaq = 0;
+
+function render() {
+  const t = COPY[lang];
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const v = t[el.getAttribute("data-i18n")];
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => {
+    const v = t[el.getAttribute("data-i18n-ph")];
+    if (v != null) el.placeholder = v;
+  });
+
+  document.getElementById("heroTitle").innerHTML =
+    esc(t.heroA) + ' <span class="hero-pill"><img src="./assets/hero-pill-bite.png" alt="" onerror="this.style.display=\'none\'"></span> ' +
+    esc(t.heroB) + ' <em style="font-style:normal;color:#C13F22">' + esc(t.heroAccent) + '</em>';
+
+  document.getElementById("bandText").innerHTML =
+    esc(t.bandA) + ' <em style="font-style:normal;color:#F09070">' + esc(t.bandLocal) + '</em> ' +
+    esc(t.bandB) + ' <em style="font-style:normal;color:#F09070">' + esc(t.bandGlobal) + '</em>';
+
+  document.getElementById("flowRows").innerHTML = t.flowRows.map(r =>
+    '<div style="background:#FBF6EC;padding:24px 28px">' +
+      '<p style="margin:0 0 6px;font-family:\'Unbounded\',Georgia,serif;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em">' + esc(r.t) + '</p>' +
+      '<p style="margin:0;color:#4A453C;font-size:16px;line-height:1.6">' + esc(r.d) + '</p>' +
+    '</div>').join("");
+
+  document.getElementById("howSlots").innerHTML = t.slots.map(s =>
+    '<span style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:999px;padding:8px 14px;font-size:15px">' + esc(s) + '</span>').join("");
+
+  document.getElementById("reportBullets").innerHTML = t.reportBullets.map(b =>
+    '<li style="display:flex;gap:12px;align-items:baseline"><span style="color:#E8724F">—</span> ' + esc(b) + '</li>').join("");
+
+  document.getElementById("reportRows").innerHTML = t.reportRows.map(r =>
+    '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,0.8fr) minmax(0,0.8fr);padding:13px 0;border-bottom:1px solid #EFE6D6;font-size:16px">' +
+      '<span>' + esc(r.who) + '</span><span style="color:#5F594E">' + esc(r.fmt) + '</span>' +
+      '<span style="text-align:right;font-weight:600">' + esc(r.reach) + '</span>' +
+    '</div>').join("");
+
+  document.getElementById("quote").textContent = t.quote;
+  document.getElementById("plan1Price").innerHTML = esc(t.plan1Price) + '<span style="font-family:\'Onest\',sans-serif;font-weight:500;font-size:16px;color:#7A7369">' + esc(t.perMonth) + '</span>';
+  document.getElementById("plan2Price").innerHTML = esc(t.plan2Price) + '<span style="font-family:\'Onest\',sans-serif;font-weight:500;font-size:16px;color:#7A7369">' + esc(t.perMonth) + '</span>';
+
+  document.getElementById("sentTitle").textContent = t.sentTitle;
+  document.getElementById("sentBody").textContent = t.sentBody;
+  document.getElementById("formError").textContent = t.formError;
+
+  renderFaq();
+
+  document.getElementById("btnEn").classList.toggle("active", lang === "en");
+  document.getElementById("btnRu").classList.toggle("active", lang === "ru");
+}
+
+function renderFaq() {
+  const t = COPY[lang];
+  document.getElementById("faqList").innerHTML = t.faq.map((it, i) => {
+    const open = i === openFaq;
+    return '<div style="border-bottom:1px solid #D6C9B2">' +
+      '<button type="button" class="faq-btn" data-faq="' + i + '" style="width:100%;background:none;border:0;padding:22px 0;display:flex;gap:20px;align-items:baseline;text-align:left;cursor:pointer;color:#1B1A17">' +
+        '<span style="font-family:\'Unbounded\',Georgia,serif;font-weight:600;font-size:19px;line-height:1.36;letter-spacing:-0.02em;flex:1">' + esc(it[0]) + '</span>' +
+        '<span style="font-size:26px;line-height:1;color:#C13F22;width:20px;text-align:center">' + (open ? '–' : '+') + '</span>' +
+      '</button>' +
+      (open ? '<p style="margin:0;padding:0 40px 24px 0;color:#4A453C;font-size:17px;max-width:640px">' + esc(it[1]) + '</p>' : '') +
+    '</div>';
+  }).join("");
+  document.querySelectorAll("[data-faq]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const i = +btn.getAttribute("data-faq");
+      openFaq = openFaq === i ? -1 : i;
+      renderFaq();
+    });
+  });
+}
+
+function setLang(l) {
+  lang = l;
+  try { localStorage.setItem("ih-lang", l); } catch (e) {}
+  render();
+}
+
+(function init() {
+  try {
+    const saved = localStorage.getItem("ih-lang");
+    if (saved === "ru" || saved === "en") lang = saved;
+  } catch (e) {}
+
+  render();
+
+  document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
+  document.getElementById("btnRu").addEventListener("click", () => setLang("ru"));
+
+  const v = document.getElementById("bandVideo");
+  if (v) {
+    v.addEventListener("error", () => { v.style.display = "none"; }, true);
+    v.play && v.play().catch(() => {});
+  }
+
+  const form = document.getElementById("demoForm");
+  const sent = document.getElementById("sentBlock");
+  const err = document.getElementById("formError");
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    err.classList.add("hidden");
+    const showSent = () => { form.classList.add("hidden"); sent.classList.remove("hidden"); };
+    if (FORMSPREE_ENDPOINT.includes("REPLACE_ME")) { showSent(); return; }
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+      if (res.ok) showSent();
+      else err.classList.remove("hidden");
+    } catch (_) {
+      err.classList.remove("hidden");
+    }
+  });
+})();
+</script>
+</body>
+</html>
