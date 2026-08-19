@@ -52,12 +52,18 @@
   /* mobile */
   @media (max-width: 760px) {
     .main-nav { display:none !important; }
+    .header-inner { padding:12px 16px !important; gap:10px !important; }
+    .header-cta { padding:9px 14px !important; font-size:13px !important; }
     .sec-grid { grid-template-columns:1fr !important; gap:32px !important; }
+    .sec-grid > * { grid-column:auto !important; grid-row:auto !important; }
     .how-grid { grid-template-columns:1fr !important; }
     .how-card { grid-column:auto !important; }
+    .stat-card { flex-direction:column !important; align-items:flex-start !important; gap:16px !important; }
+    .stat-card > div { text-align:left !important; border-left:0 !important; padding-left:0 !important; }
     .foot-grid { grid-template-columns:1fr !important; }
     .report-card { transform:none !important; }
     .demo-form { transform:none !important; }
+    .sec-pad { padding-left:20px !important; padding-right:20px !important; }
   }
 </style>
 </head>
@@ -65,7 +71,7 @@
 <div style="position:relative;z-index:2;background:#F5EFE4;color:#1B1A17;font-family:'Onest',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased">
 
   <header style="position:sticky;top:0;z-index:50;background:rgba(245,239,228,0.94);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid #E2D8C6">
-    <div style="max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:28px">
+    <div class="header-inner" style="max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:28px">
       <a href="#" style="display:flex;align-items:center;margin-right:auto" aria-label="Influence Hub">
         <img src="./assets/influence-hub-logo.png" alt="Influence Hub" style="height:32px;width:auto;display:block;mix-blend-mode:multiply" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
         <span class="wordmark" style="font-size:22px;display:none">Influence Hub</span>
@@ -80,7 +86,7 @@
         <button type="button" id="btnEn" class="lang-btn">EN</button>
         <button type="button" id="btnRu" class="lang-btn">RU</button>
       </div>
-      <a href="#demo" class="btn-primary" style="padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap" data-i18n="cta">Book a demo</a>
+      <a href="#demo" class="btn-primary header-cta" style="padding:11px 20px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap" data-i18n="cta">Book a demo</a>
     </div>
   </header>
 
@@ -153,7 +159,7 @@
         <p data-i18n="swapTitle" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:19px;line-height:1.34;letter-spacing:-0.02em"></p>
       </div>
 
-      <div class="how-card card" style="border-radius:20px;padding:30px;grid-column:span 4;background:#FBF6EC;border:1px solid #E2D8C6;display:flex;flex-direction:row;align-items:center;gap:26px;justify-content:space-between">
+      <div class="how-card card stat-card" style="border-radius:20px;padding:30px;grid-column:span 4;background:#FBF6EC;border:1px solid #E2D8C6;display:flex;flex-direction:row;align-items:center;gap:26px;justify-content:space-between">
         <div>
           <p data-i18n="statLabel1" style="margin:0 0 8px;font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></p>
           <p data-i18n="statValue1" style="margin:0;font-family:'Unbounded',Georgia,serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-0.03em"></p>
