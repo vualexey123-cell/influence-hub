@@ -92,6 +92,13 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque',Georgia,sans-serif;letter-spacing:
 .site-footer a:hover{color:var(--accent-soft)}
 .site-footer .sf-mail{color:#E4DCCE;margin-right:auto}
 
+.float-contacts{position:fixed;right:18px;bottom:18px;z-index:100;display:flex;flex-direction:column;gap:12px}
+.float-contacts a{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px -6px rgba(0,0,0,0.35);transition:transform .18s ease}
+.float-contacts a:hover{transform:scale(1.08)}
+.float-contacts .wa{background:#25D366}
+.float-contacts .tg{background:#229ED9}
+.float-contacts svg{width:28px;height:28px;fill:#fff}
+
 @media (max-width:760px){
   body{font-size:17px}
   .wrap{padding:0 18px}
