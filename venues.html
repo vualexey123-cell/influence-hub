@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Cookie consent + analytics -->
+<script src="/consent.js" defer></script>
+<title>For venues — register with Influence Hub</title>
+<meta name="description" content="Register your restaurant or café with Influence Hub and get a rotating line-up of local food creators every month — sourcing, scheduling and reporting handled for you.">
+<meta property="og:title" content="For venues — Influence Hub">
+<meta property="og:description" content="A rotating line-up of local food creators every month, handled for you.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://inflnc.tech/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://inflnc.tech/og-image.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="blog/blog.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html" aria-label="Influence Hub"><img src="assets/influence-hub-logo.png" alt="Influence Hub"></a>
+    <nav class="header-nav">
+      <a class="nav-link" href="index.html#how">How it works</a>
+      <a class="nav-link" href="creators.html">For creators</a>
+      <a href="blog/index.html">Blog</a>
+      <a class="btn btn-primary" href="#register">Register</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="wrap blog-hero">
+    <p class="eyebrow">For venues</p>
+    <h1>A fresh line-up of local creators — every month, hands off</h1>
+    <p>Register your restaurant or café and we do the rest: we source neighbourhood creators, agree the terms, spread their visits across the month, and send you one clear report. You just open the door.</p>
+  </section>
+
+  <section class="wrap" style="padding-bottom:40px">
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start">
+      <div>
+        <ul class="perk-list">
+          <li><span class="tick">→</span> <span><strong>New creators every month.</strong> A rotating cast of local voices, not the same few faces.</span></li>
+          <li><span class="tick">→</span> <span><strong>Zero admin.</strong> Sourcing, outreach and scheduling are ours — no group chats to manage.</span></li>
+          <li><span class="tick">→</span> <span><strong>One clear report.</strong> At the end of the month: who came, what they posted, how many people saw it.</span></li>
+          <li><span class="tick">→</span> <span><strong>No-shows covered.</strong> If a creator doesn't deliver, we replace them the same month at no extra cost.</span></li>
+          <li><span class="tick">→</span> <span><strong>A trial first month.</strong> Don't like the line-up? We stop after it — no renewal pressure.</span></li>
+        </ul>
+        <p class="reg-note">Prefer a live walkthrough first? <a href="index.html#demo">Book a demo</a> instead — we'll show real profiles from your city.</p>
+      </div>
+
+      <div id="register">
+        <div id="okBlock" class="form-ok hidden">
+          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0 0 8px">Got it — your venue is registered</p>
+          <p style="margin:0;color:var(--muted)">We'll write within a day with a couple of local profiles and next steps.</p>
+        </div>
+        <form id="regForm" class="reg-form">
+          <input type="hidden" name="type" value="venue">
+          <input type="hidden" name="_subject" value="New venue registration — Influence Hub">
+          <label>Venue name
+            <input name="venue" required placeholder="Marlow Coffee">
+          </label>
+          <label>Country
+            <select name="country" required id="countrySelect">
+              <option value="" disabled selected>Select your country</option>
+            </select>
+          </label>
+          <label>Your name
+            <input name="name" required placeholder="Layla">
+          </label>
+          <label>Number of locations
+            <select name="locations" required>
+              <option value="" disabled selected>Select</option>
+              <option>1 venue</option>
+              <option>2–6 venues</option>
+              <option>7+ venues</option>
+            </select>
+          </label>
+          <label>Phone or Telegram
+            <input name="contact" required pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" title="Enter a Telegram @username (e.g. @layla) or a phone number with country code (e.g. +971 50 123 4567)." placeholder="@layla or +971…" inputmode="text" autocomplete="off">
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent" required value="yes">
+            <span>I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+          </label>
+          <button type="submit">Register your venue</button>
+          <p id="errMsg" class="form-err hidden">Something went wrong. Please write to hi@influencehub.ae.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="sf-mail" href="mailto:hi@influencehub.ae">hi@influencehub.ae</a>
+    <a href="index.html">Home</a>
+    <a href="creators.html">For creators</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/cookies.html">Cookies</a>
+    <span>2026 © Influence Hub</span>
+  </div>
+</footer>
+
+<div class="float-contacts">
+  <a class="wa" href="https://wa.me/79053351287?text=Hi!%20I'd%20like%20to%20register%20my%20venue%20with%20Influence%20Hub" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a class="tg" href="https://t.me/vu_alexey" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</div>
+
+<script>
+(function () {
+  var FORMSPREE = "https://formspree.io/f/xjyblgzv";
+  var COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+  var sel = document.getElementById("countrySelect");
+  COUNTRIES.forEach(function (c) { var o = document.createElement("option"); o.value = c; o.textContent = c; sel.appendChild(o); });
+
+  var form = document.getElementById("regForm");
+  var ok = document.getElementById("okBlock");
+  var err = document.getElementById("errMsg");
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.classList.add("hidden");
+    try {
+      var res = await fetch(FORMSPREE, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+      if (res.ok) { form.classList.add("hidden"); ok.classList.remove("hidden"); }
+      else err.classList.remove("hidden");
+    } catch (_) { err.classList.remove("hidden"); }
+  });
+})();
+</script>
+</body>
+</html>

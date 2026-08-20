@@ -192,6 +192,24 @@
     </div>
   </section>
 
+  <section id="join" style="max-width:1180px;margin:0 auto;padding:8px 32px 88px">
+    <h2 data-i18n="joinHeading" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.02em;line-height:1.1;margin:0 0 24px;text-align:center"></h2>
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
+      <div style="background:#1B1A17;color:#F5EFE4;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+        <span data-i18n="joinVenueLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#E8724F;font-weight:600"></span>
+        <h3 data-i18n="joinVenueTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0;color:#FFF6EE"></h3>
+        <p data-i18n="joinVenueBody" style="margin:0;color:#CFC7BA;font-size:16px;line-height:1.6"></p>
+        <a href="/venues.html" class="btn-primary" data-i18n="joinVenueCta" style="margin-top:auto;align-self:flex-start;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      </div>
+      <div style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+        <span data-i18n="joinCreatorLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#C13F22;font-weight:600"></span>
+        <h3 data-i18n="joinCreatorTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0"></h3>
+        <p data-i18n="joinCreatorBody" style="margin:0;color:#4A453C;font-size:16px;line-height:1.6"></p>
+        <a href="/creators.html" class="btn-dark-outline" data-i18n="joinCreatorCta" style="margin-top:auto;align-self:flex-start;border:1px solid #1B1A17;color:#1B1A17;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      </div>
+    </div>
+  </section>
+
   <section style="position:relative;overflow:hidden;background:#1B1A17;min-height:340px;display:grid;place-items:center;border-top:1px solid #2B2924;border-bottom:1px solid #2B2924">
     <video id="bandVideo" autoplay loop muted playsinline preload="auto" poster="./assets/band-poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
       <source src="./assets/band-loop.mp4" type="video/mp4">
@@ -284,14 +302,16 @@
         <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fVenue"></span>
           <input class="input" name="place" required data-i18n-ph="pVenue" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
         </label>
-        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fCity"></span>
-          <input class="input" name="city" required data-i18n-ph="pCity" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+        <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fCountry"></span>
+          <select class="input" id="countrySelect" name="country" required style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17;appearance:auto">
+            <option value="" disabled selected data-i18n="countryPlaceholder"></option>
+          </select>
         </label>
         <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fName"></span>
           <input class="input" name="name" required data-i18n-ph="pName" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
         </label>
         <label style="display:grid;gap:6px;font-size:15px;color:#5F594E"><span data-i18n="fContact"></span>
-          <input class="input" name="contact" required data-i18n-ph="pContact" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
+          <input class="input" name="contact" required data-i18n-ph="pContact" pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" data-i18n-title="contactTitle" inputmode="text" autocomplete="off" style="border:1px solid #D6C9B2;background:#FFFDF9;border-radius:11px;padding:13px 14px;font-size:17px;color:#1B1A17">
         </label>
         <label style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:#5F594E;line-height:1.45">
           <input type="checkbox" name="consent" required value="yes" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;accent-color:#C13F22">
@@ -311,6 +331,8 @@
         <a href="https://t.me/vu_alexey" target="_blank" rel="noopener" class="footlink">Telegram</a>
         <a href="https://wa.me/79053351287" target="_blank" rel="noopener" class="footlink">WhatsApp</a>
         <a href="/privacy.html" class="footlink" data-i18n="navPrivacy"></a>
+        <a href="/terms.html" class="footlink" data-i18n="navTerms"></a>
+        <a href="/cookies.html" class="footlink" data-i18n="navCookies"></a>
         <a href="#price" class="footlink" data-i18n="navPrice"></a>
         <a href="#faq" class="footlink" data-i18n="navFaq"></a>
         <a href="blog/index.html" class="footlink" data-i18n="navBlog"></a>
@@ -333,18 +355,22 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjyblgzv";
 
 const COPY = {
   en: {
-    navHow: "How it works", navReport: "Reporting", navPrice: "Pricing", navFaq: "FAQ", navBlog: "Blog", navPrivacy: "Privacy Policy",
+    navHow: "How it works", navReport: "Reporting", navPrice: "Pricing", navFaq: "FAQ", navBlog: "Blog", navPrivacy: "Privacy Policy", navTerms: "Terms", navCookies: "Cookie Policy",
+    joinHeading: "Two ways onto the platform",
+    joinVenueLabel: "For venues", joinVenueTitle: "Register your restaurant or café", joinVenueBody: "Get a rotating line-up of local creators every month — sourcing, scheduling and reporting handled for you.", joinVenueCta: "Register your venue",
+    joinCreatorLabel: "For creators", joinCreatorTitle: "Join as a food creator", joinCreatorBody: "Get matched with venues near you, visit on your own schedule and grow your audience with content you already make.", joinCreatorCta: "Apply as a creator",
     consentText: 'I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     cta: "Book a demo", ctaSecondary: "See how it works first", ctaPlan: "Discuss on a demo",
     heroA: "Influencers bring you guests", heroB: "—", heroAccent: "every month, on autopilot",
     heroLead: "We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.",
-    flowTitle: "New creators every month",
-    flowLead: "Not a one-off campaign but a steady flow: the line-up refreshes, reach compounds, and none of it needs your time.",
+    flowTitle: "Your place, rediscovered month after month",
+    flowLead: "Not a one-off blast but a rhythm: a rotating cast of neighbourhood voices keeps introducing your kitchen to people who have not tried it yet.",
     flowRows: [
-      { t: "5 new creators each month", d: "A fresh line-up of local creators every month, not the same few faces." },
-      { t: "7–10 new videos each month", d: "Real content about your place, shot and published within the month." },
-      { t: "Local reach that compounds", d: "Posts do not disappear: the neighbourhood gets to know you without an ad budget." },
-      { t: "Visits on autopilot, fully hands off", d: "Sourcing, messaging and scheduling are ours. You just host the guests." }
+      { t: "A rotating cast, not the same faces", d: "Around five different local creators come by each month, so the audience keeps widening instead of repeating." },
+      { t: "7–10 fresh videos on local feeds", d: "Real, in-their-own-words content about your food — filmed and published within the month." },
+      { t: "Reach that climbs month over month", d: "Every new wave of posts adds to the last, so your total local views keep growing instead of resetting to zero." },
+      { t: "Awareness that sticks to the area", d: "Posts keep resurfacing long after they go live, so the neighbourhood keeps discovering you with no ad spend." },
+      { t: "Run end to end for you", d: "Sourcing, outreach, scheduling and reporting are ours. You just open the door." }
     ],
     howTitle: "How it works with us",
     howLead: "Four steps. Three of them are on our side, and we never ask you to approve things in group chats.",
@@ -379,9 +405,9 @@ const COPY = {
     quoteAuthor: "Marina Kovaleva — manager, Polka Coffee, Kazan",
     priceTitle: "What it costs",
     priceLead: "A fixed monthly subscription. Creator fees, coordination and the report are included — nothing to top up along the way.",
-    plan1Label: "Single venue", plan1Price: "from ₽45,000", perMonth: " / month",
+    plan1Label: "Single venue", plan1Price: "from $590", perMonth: " / month",
     plan1Body: "6–10 creators a month, scheduling, reporting, replacements for no-shows.",
-    plan2Label: "Local chain, 2–6 locations", plan2Price: "from ₽78,000",
+    plan2Label: "Local chain, 2–6 locations", plan2Price: "from $990",
     plan2Body: "Different line-ups per location and neighbourhood, one combined report, one manager for everything.",
     priceNote: "The first month is a trial: if you do not like the line-up, we stop after it — no renewal conversations.",
     faqTitle: "Questions we get in the first five minutes",
@@ -390,8 +416,8 @@ const COPY = {
     demoNote: "We reply within a day. We write instead of calling ten times.",
     sentTitle: "Got it — your request is in",
     sentBody: "We will write within a day and send a couple of profiles from your city, so the call has something concrete in it.",
-    fVenue: "Venue", pVenue: "Polka Coffee", fCity: "City", pCity: "Kazan",
-    fName: "Your name", pName: "Marina", fContact: "Phone or Telegram", pContact: "@marina or +1…",
+    fVenue: "Venue", pVenue: "Marlow Coffee", fCountry: "Country", countryPlaceholder: "Select your country",
+    fName: "Your name", pName: "Layla", fContact: "Phone or Telegram", pContact: "@layla or +971…", contactTitle: "Enter a Telegram @username (e.g. @layla) or a phone number with country code (e.g. +971 50 123 4567).",
     formNote: "No newsletters, no selling your data. One message, on the point.",
     formError: "Something went wrong. Please write to hi@influencehub.ru.",
     copyright: "2026 © Influence Hub, all rights reserved",
@@ -406,18 +432,22 @@ const COPY = {
     ]
   },
   ru: {
-    navHow: "Как работает", navReport: "Отчёт", navPrice: "Сколько стоит", navFaq: "Вопросы", navBlog: "Блог", navPrivacy: "Политика конфиденциальности",
+    navHow: "Как работает", navReport: "Отчёт", navPrice: "Сколько стоит", navFaq: "Вопросы", navBlog: "Блог", navPrivacy: "Политика конфиденциальности", navTerms: "Условия", navCookies: "Файлы cookie",
+    joinHeading: "Два способа попасть на платформу",
+    joinVenueLabel: "Для заведений", joinVenueTitle: "Зарегистрируйте ресторан или кафе", joinVenueBody: "Каждый месяц — новый состав локальных авторов. Подбор, расписание и отчёт берём на себя.", joinVenueCta: "Зарегистрировать заведение",
+    joinCreatorLabel: "Для авторов", joinCreatorTitle: "Стать фуд-креатором", joinCreatorBody: "Подберём заведения рядом с вами, ходите по своему графику и растите аудиторию на контенте, который и так снимаете.", joinCreatorCta: "Стать креатором",
     consentText: 'Я даю согласие на обработку моих персональных данных в соответствии с <a href="/privacy.html" target="_blank" rel="noopener">Политикой конфиденциальности</a>.',
     cta: "Записаться на демо", ctaSecondary: "Сначала посмотреть, как это устроено", ctaPlan: "Обсудить на демо",
     heroA: "Инфлюенсеры приводят вам гостей", heroB: "—", heroAccent: "каждый месяц, на автопилоте",
     heroLead: "Мы находим локальных авторов про еду, договариваемся, разводим их по дням и присылаем один понятный отчёт. С вас — стол и пара слов о кухне.",
-    flowTitle: "Новые креаторы каждый месяц",
-    flowLead: "Не разовая акция, а поток: состав обновляется, охват накапливается, а вы в этом не участвуете.",
+    flowTitle: "Ваше заведение открывают заново — месяц за месяцем",
+    flowLead: "Не разовый залп, а ритм: каждый месяц новые локальные голоса знакомят с вашей кухней тех, кто ещё у вас не был.",
     flowRows: [
-      { t: "5 новых авторов каждый месяц", d: "Каждый месяц — новый состав локальных креаторов, а не одни и те же лица." },
-      { t: "7–10 новых видео каждый месяц", d: "Живой контент про ваше заведение, снятый и опубликованный за месяц." },
-      { t: "Локальный охват, который накапливается", d: "Публикации не исчезают: район постепенно узнаёт вас без бюджета на рекламу." },
-      { t: "Визиты на автопилоте, без вашего участия", d: "Подбор, переписка и расписание — на нас. Вы только принимаете гостей." }
+      { t: "Сменный состав, а не одни и те же лица", d: "Каждый месяц заходят около пяти разных локальных авторов — аудитория расширяется, а не повторяется." },
+      { t: "7–10 свежих видео в лентах местных", d: "Живой контент про вашу еду, своими словами — снятый и опубликованный за месяц." },
+      { t: "Охват, который растёт из месяца в месяц", d: "Каждая новая волна публикаций добавляется к прошлой: суммарные локальные просмотры накапливаются, а не обнуляются." },
+      { t: "Узнаваемость, закреплённая за районом", d: "Публикации всплывают и после выхода, поэтому район продолжает узнавать вас без рекламного бюджета." },
+      { t: "Полностью под ключ", d: "Подбор, переписка, расписание и отчёт — на нас. Вы просто открываете двери." }
     ],
     howTitle: "Как это устроено у нас",
     howLead: "Четыре шага. Три из них — на нашей стороне, и мы не просим вас ничего согласовывать в чатах.",
@@ -452,9 +482,9 @@ const COPY = {
     quoteAuthor: "Марина Ковалёва — управляющая кофейни «Полка», Казань",
     priceTitle: "Сколько это стоит",
     priceLead: "Фиксированная подписка за месяц. Гонорары авторов, согласования и отчёт уже внутри — доплачивать по ходу не придётся.",
-    plan1Label: "Одно заведение", plan1Price: "от 45 000 ₽", perMonth: " / месяц",
+    plan1Label: "Одно заведение", plan1Price: "от $590", perMonth: " / месяц",
     plan1Body: "6–10 авторов в месяц, расписание, отчёт, замена тех, кто не пришёл.",
-    plan2Label: "Локальная сеть, 2–6 точек", plan2Price: "от 78 000 ₽",
+    plan2Label: "Локальная сеть, 2–6 точек", plan2Price: "от $990",
     plan2Body: "Разные составы под точки и районы, сводный отчёт по сети, один менеджер на всё.",
     priceNote: "Первый месяц — пробный: не понравится состав авторов, останавливаемся после него без разговоров про «продление».",
     faqTitle: "Вопросы, которые нам задают в первые пять минут",
@@ -463,8 +493,8 @@ const COPY = {
     demoNote: "Отвечаем в течение дня. Не звоним по десять раз — пишем.",
     sentTitle: "Готово, заявка у нас",
     sentBody: "Напишем в течение дня и сразу пришлём пару профилей из вашего города — чтобы было о чём говорить на созвоне.",
-    fVenue: "Заведение", pVenue: "Кофейня «Полка»", fCity: "Город", pCity: "Казань",
-    fName: "Как к вам обращаться", pName: "Марина", fContact: "Телефон или Telegram", pContact: "@marina или +7…",
+    fVenue: "Заведение", pVenue: "Marlow Coffee", fCountry: "Страна", countryPlaceholder: "Выберите страну",
+    fName: "Как к вам обращаться", pName: "Layla", fContact: "Телефон или Telegram", pContact: "@layla или +971…", contactTitle: "Укажите Telegram @username (например @layla) или телефон с кодом страны (например +971 50 123 4567).",
     formNote: "Ничего не рассылаем и не продаём базу. Пишем один раз по делу.",
     formError: "Что-то пошло не так. Напишите на hi@influencehub.ru.",
     copyright: "2026 © Influence Hub, все права защищены",
@@ -483,6 +513,7 @@ const COPY = {
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let lang = "en";
 let openFaq = 0;
+const COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
 
 function render() {
   const t = COPY[lang];
@@ -495,6 +526,10 @@ function render() {
   document.querySelectorAll("[data-i18n-ph]").forEach(el => {
     const v = t[el.getAttribute("data-i18n-ph")];
     if (v != null) el.placeholder = v;
+  });
+  document.querySelectorAll("[data-i18n-title]").forEach(el => {
+    const v = t[el.getAttribute("data-i18n-title")];
+    if (v != null) el.title = v;
   });
 
   document.getElementById("heroTitle").innerHTML =
@@ -572,6 +607,15 @@ function setLang(l) {
   } catch (e) {}
 
   render();
+
+  const countrySelect = document.getElementById("countrySelect");
+  if (countrySelect) {
+    COUNTRIES.forEach(function (c) {
+      const o = document.createElement("option");
+      o.value = c; o.textContent = c;
+      countrySelect.appendChild(o);
+    });
+  }
 
   document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
   document.getElementById("btnRu").addEventListener("click", () => setLang("ru"));

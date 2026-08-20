@@ -99,6 +99,22 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque',Georgia,sans-serif;letter-spacing:
 .float-contacts .tg{background:#229ED9}
 .float-contacts svg{width:28px;height:28px;fill:#fff}
 
+.reg-form{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:14px;max-width:540px}
+.reg-form label{display:grid;gap:6px;font-size:14px;color:var(--muted2)}
+.reg-form input,.reg-form select{border:1px solid var(--line2);background:#FFFDF9;border-radius:11px;padding:12px 14px;font-size:16px;color:var(--ink);font-family:inherit}
+.reg-form input:focus,.reg-form select:focus{border-color:var(--accent);outline:none}
+.reg-form .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.reg-form .consent input{width:16px;height:16px;margin-top:3px;flex-shrink:0;accent-color:var(--accent)}
+.reg-form button{margin-top:4px;background:var(--accent);color:#FFF9F2;border:0;border-radius:999px;padding:14px 22px;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit}
+.reg-form button:hover{background:var(--accent-hover)}
+.reg-note{font-size:13px;color:var(--muted2);margin:10px 0 0}
+.form-ok{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:26px;max-width:540px}
+.form-err{color:var(--accent-hover);font-size:14px;margin:0}
+.hidden{display:none}
+.perk-list{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:14px}
+.perk-list li{display:flex;gap:12px;align-items:flex-start;font-size:17px}
+.perk-list .tick{color:var(--accent);font-weight:700;flex-shrink:0}
+
 @media (max-width:760px){
   body{font-size:17px}
   .wrap{padding:0 18px}
