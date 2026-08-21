@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <!-- Cookie consent + analytics -->
 <script src="/consent.js" defer></script>
-<title>Influence Hub — local food creators, on autopilot</title>
+<title>Influence Hub — local food bloggers bring you guests</title>
 <meta name="description" content="We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.">
 <meta property="og:title" content="Influence Hub">
 <meta property="og:description" content="Local food creators eating at your place every month — sourcing, scheduling and reporting handled for you.">
@@ -113,6 +113,7 @@
 
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #E2D8C6">
     <div style="position:relative;max-width:1000px;margin:0 auto;padding:104px 32px 112px;text-align:center;min-width:0">
+      <p data-i18n="forWho" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#C13F22;font-weight:600;margin:0 0 16px"></p>
       <h1 id="heroTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(38px,4.4vw,63px);line-height:1.03;letter-spacing:-0.025em;margin:0 0 24px;text-wrap:pretty"></h1>
       <p id="heroLead" style="font-size:21px;line-height:1.5;color:#4A453C;margin:0 auto 36px;max-width:640px;text-wrap:pretty"></p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center">
@@ -363,6 +364,7 @@ const COPY = {
     joinCreatorLabel: "For bloggers", joinCreatorTitle: "Join as a food blogger", joinCreatorBody: "Get invites to places near you, go when you want, grow your audience.", joinCreatorCta: "Join as a blogger",
     consentText: 'I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     cta: "Book a free call", ctaSecondary: "First, see how it works", ctaPlan: "Talk on a call",
+    forWho: "For cafés, restaurants and bakeries",
     heroA: "Local food bloggers", heroB: "bring you new guests", heroAccent: "every month",
     heroLead: "We find good local bloggers, invite them to your place, plan their visits, and send you one simple report. You just give a table and a few words about your food.",
     flowTitle: "New bloggers every month",
@@ -440,6 +442,7 @@ const COPY = {
     joinCreatorLabel: "Для авторов", joinCreatorTitle: "Стать фуд-креатором", joinCreatorBody: "Подберём заведения рядом с вами, ходите по своему графику и растите аудиторию на контенте, который и так снимаете.", joinCreatorCta: "Стать креатором",
     consentText: 'Я даю согласие на обработку моих персональных данных в соответствии с <a href="/privacy.html" target="_blank" rel="noopener">Политикой конфиденциальности</a>.',
     cta: "Записаться на демо", ctaSecondary: "Сначала посмотреть, как это устроено", ctaPlan: "Обсудить на демо",
+    forWho: "Кафе, рестораны и пекарни",
     heroA: "Инфлюенсеры приводят вам гостей", heroB: "—", heroAccent: "каждый месяц, на автопилоте",
     heroLead: "Мы находим локальных авторов про еду, договариваемся, разводим их по дням и присылаем один понятный отчёт. С вас — стол и пара слов о кухне.",
     flowTitle: "Ваше заведение открывают заново — месяц за месяцем",
@@ -544,7 +547,7 @@ function render() {
 
   document.getElementById("flowRows").innerHTML = t.flowRows.map(r =>
     '<div style="background:#FBF6EC;padding:24px 28px">' +
-      '<p style="margin:0 0 6px;font-family:\'Bricolage Grotesque\',Georgia,sans-serif;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em">' + esc(r.t) + '</p>' +
+      '<p style="margin:0 0 6px;display:flex;gap:10px;align-items:baseline;font-family:\'Bricolage Grotesque\',Georgia,sans-serif;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em"><span style="color:#C13F22;flex-shrink:0">✓</span><span>' + esc(r.t) + '</span></p>' +
       '<p style="margin:0;color:#4A453C;font-size:16px;line-height:1.6">' + esc(r.d) + '</p>' +
     '</div>').join("");
 
@@ -552,7 +555,7 @@ function render() {
     '<span style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:999px;padding:8px 14px;font-size:15px">' + esc(s) + '</span>').join("");
 
   document.getElementById("reportBullets").innerHTML = t.reportBullets.map(b =>
-    '<li style="display:flex;gap:12px;align-items:baseline"><span style="color:#E8724F">—</span> ' + esc(b) + '</li>').join("");
+    '<li style="display:flex;gap:12px;align-items:baseline"><span style="color:#E8724F">✓</span> ' + esc(b) + '</li>').join("");
 
   document.getElementById("reportRows").innerHTML = t.reportRows.map(r =>
     '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,0.8fr) minmax(0,0.8fr);padding:13px 0;border-bottom:1px solid #EFE6D6;font-size:16px">' +
