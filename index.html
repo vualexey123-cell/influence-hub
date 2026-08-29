@@ -67,6 +67,12 @@
   .float-contacts .tg { background:#229ED9; }
   .float-contacts svg { width:28px; height:28px; fill:#fff; }
 
+  /* tablet: how-grid to 2 columns so cards stay readable */
+  @media (max-width: 980px) {
+    .how-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+    .how-card { grid-column:auto !important; }
+  }
+
   /* mobile */
   @media (max-width: 760px) {
     .main-nav { display:none !important; }
