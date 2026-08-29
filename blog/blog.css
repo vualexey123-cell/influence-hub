@@ -129,6 +129,16 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque',Georgia,sans-serif;letter-spacing:
 .cr-faq details[open] summary::before{content:"– "}
 .cr-faq p{margin:12px 0 0;color:var(--muted);font-size:16px;max-width:680px}
 
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
+.bento-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .2s ease}
+.bento-card:hover{transform:translateY(-3px)}
+.bento-card.dark{background:var(--dark);border-color:var(--dark);color:#F5EFE4}
+.bento-card.accent{background:var(--accent);border-color:var(--accent);color:#FFF9F2}
+.bento-card h3{font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em;margin:0 0 6px}
+.bento-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.bento-card.dark p,.bento-card.accent p{color:rgba(255,249,242,.82)}
+@media (max-width:760px){.bento{grid-template-columns:1fr}.bento-card{grid-column:auto !important}}
+
 @media (max-width:760px){
   body{font-size:17px}
   .wrap{padding:0 18px}
