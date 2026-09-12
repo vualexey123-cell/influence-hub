@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Cookie consent + analytics -->
 <script src="/consent.js" defer></script>
-<title>Influence Hub — local food creators, on autopilot</title>
+<title>Influence Hub — local food bloggers bring you guests</title>
 <meta name="description" content="We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.">
 <meta property="og:title" content="Influence Hub">
 <meta property="og:description" content="Local food creators eating at your place every month — sourcing, scheduling and reporting handled for you.">
@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://inflnc.tech/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://inflnc.tech/og-image.png">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Influence Hub","url":"https://inflnc.tech/","logo":"https://inflnc.tech/assets/influence-hub-logo.png","description":"Influence Hub arranges monthly visits by local food creators to restaurants and cafes — sourcing, scheduling and reporting handled for you."}
 </script>
@@ -125,8 +125,8 @@
         <a href="#report" class="nav-link" data-i18n="navReport">Reporting</a>
         <a href="#price" class="nav-link" data-i18n="navPrice">Pricing</a>
         <a href="#faq" class="nav-link" data-i18n="navFaq">FAQ</a>
-        <a href="blog/index.html" class="nav-link" data-i18n="navBlog">Blog</a>
-        <a href="creators.html" class="nav-link" data-i18n="navCreators">For creators</a>
+        <a href="/blog/index.html" class="nav-link" data-i18n="navBlog">Blog</a>
+        <a href="/creators.html" class="nav-link" data-i18n="navCreators">For creators</a>
       </nav>
       <div style="display:flex;align-items:center;gap:2px;border:1px solid #D6C9B2;border-radius:999px;padding:3px;flex-shrink:0">
         <button type="button" id="btnEn" class="lang-btn">EN</button>
@@ -138,6 +138,7 @@
 
   <section style="position:relative;overflow:hidden;border-bottom:1px solid #E2D8C6">
     <div style="position:relative;max-width:1000px;margin:0 auto;padding:104px 32px 112px;text-align:center;min-width:0">
+      <p data-i18n="forWho" style="font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#C13F22;font-weight:600;margin:0 0 16px"></p>
       <h1 id="heroTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(38px,4.4vw,63px);line-height:1.03;letter-spacing:-0.025em;margin:0 0 24px;text-wrap:pretty"></h1>
       <p id="heroLead" style="font-size:21px;line-height:1.5;color:#4A453C;margin:0 auto 36px;max-width:640px;text-wrap:pretty"></p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center">
@@ -148,7 +149,7 @@
   </section>
 
   <section style="position:relative;overflow:hidden;border-top:1px solid #E2D8C6;border-bottom:1px solid #E2D8C6;background:#F0E7D8">
-    <img class="creators-bg" src="./assets/creators-bg.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;filter:blur(2.5px) saturate(1.05);transform:scale(1.02);pointer-events:none;user-select:none">
+    <img class="creators-bg" src="/assets/creators-bg.png" alt="" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 30%;filter:blur(2.5px) saturate(1.05);transform:scale(1.02);pointer-events:none;user-select:none">
     <div style="position:absolute;inset:0;background:linear-gradient(260deg,rgba(240,231,216,0.92) 0%,rgba(240,231,216,0.82) 32%,rgba(240,231,216,0.5) 66%,rgba(240,231,216,0.38) 100%);pointer-events:none"></div>
     <div class="sec-grid" style="position:relative;max-width:1180px;margin:0 auto;padding:72px 32px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr);gap:56px">
       <div style="grid-column:2;grid-row:1">
@@ -180,9 +181,9 @@
         <h3 data-i18n="s2Title" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
         <p data-i18n="s2Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
         <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px">
-          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@ne.pro.edu</span>
-          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@zavtrak.tut</span>
-          <span style="background:#F5EFE4;border:1px dashed #D6C9B2;border-radius:999px;padding:8px 14px;font-size:15px;color:#9A9288">@promo.kazan — <span data-i18n="removed"></span></span>
+          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@dubai.bites</span>
+          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@brunch.lea</span>
+          <span style="background:#F5EFE4;border:1px dashed #D6C9B2;border-radius:999px;padding:8px 14px;font-size:15px;color:#9A9288">@promo.dxb — <span data-i18n="removed"></span></span>
         </div>
       </div>
 
@@ -219,32 +220,6 @@
     </div>
   </section>
 
-  <section id="join" style="max-width:1180px;margin:0 auto;padding:8px 32px 88px">
-    <h2 data-i18n="joinHeading" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.02em;line-height:1.1;margin:0 0 24px;text-align:center"></h2>
-    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
-      <div style="background:#1B1A17;color:#F5EFE4;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
-        <span data-i18n="joinVenueLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#E8724F;font-weight:600"></span>
-        <h3 data-i18n="joinVenueTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0;color:#FFF6EE"></h3>
-        <p data-i18n="joinVenueBody" style="margin:0;color:#CFC7BA;font-size:16px;line-height:1.6"></p>
-        <a href="/venues.html" class="btn-primary" data-i18n="joinVenueCta" style="margin-top:auto;align-self:flex-start;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
-      </div>
-      <div style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
-        <span data-i18n="joinCreatorLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#C13F22;font-weight:600"></span>
-        <h3 data-i18n="joinCreatorTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0"></h3>
-        <p data-i18n="joinCreatorBody" style="margin:0;color:#4A453C;font-size:16px;line-height:1.6"></p>
-        <a href="/creators.html" class="btn-dark-outline" data-i18n="joinCreatorCta" style="margin-top:auto;align-self:flex-start;border:1px solid #1B1A17;color:#1B1A17;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
-      </div>
-    </div>
-  </section>
-
-  <section style="position:relative;overflow:hidden;background:#1B1A17;min-height:340px;display:grid;place-items:center;border-top:1px solid #2B2924;border-bottom:1px solid #2B2924">
-    <video id="bandVideo" autoplay loop muted playsinline preload="auto" poster="./assets/band-poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
-      <source src="./assets/band-loop.mp4" type="video/mp4">
-    </video>
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,23,0.55),rgba(27,26,23,0.3) 45%,rgba(27,26,23,0.7))"></div>
-    <p id="bandText" style="position:relative;margin:0;padding:72px 40px;max-width:1280px;text-align:center;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:1.12;letter-spacing:-0.025em;color:#FFF6EE;text-shadow:0 2px 24px rgba(0,0,0,0.45);text-wrap:pretty"></p>
-  </section>
-
   <section id="report" style="background:#1B1A17;color:#F5EFE4">
     <div class="sec-grid" style="max-width:1180px;margin:0 auto;padding:88px 32px;display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:64px;align-items:center">
       <div>
@@ -265,6 +240,32 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="join" style="max-width:1180px;margin:0 auto;padding:8px 32px 88px">
+    <h2 data-i18n="joinHeading" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(26px,2.8vw,38px);letter-spacing:-0.02em;line-height:1.1;margin:0 0 24px;text-align:center"></h2>
+    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
+      <div style="background:#1B1A17;color:#F5EFE4;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+        <span data-i18n="joinVenueLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#E8724F;font-weight:600"></span>
+        <h3 data-i18n="joinVenueTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0;color:#FFF6EE"></h3>
+        <p data-i18n="joinVenueBody" style="margin:0;color:#CFC7BA;font-size:16px;line-height:1.6"></p>
+        <a href="/venues.html" class="btn-primary" data-i18n="joinVenueCta" style="margin-top:auto;align-self:flex-start;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      </div>
+      <div style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:14px">
+        <span data-i18n="joinCreatorLabel" style="font-size:13px;letter-spacing:0.06em;text-transform:uppercase;color:#C13F22;font-weight:600"></span>
+        <h3 data-i18n="joinCreatorTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0"></h3>
+        <p data-i18n="joinCreatorBody" style="margin:0;color:#4A453C;font-size:16px;line-height:1.6"></p>
+        <a href="/creators.html" class="btn-dark-outline" data-i18n="joinCreatorCta" style="margin-top:auto;align-self:flex-start;border:1px solid #1B1A17;color:#1B1A17;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;background:#1B1A17;min-height:340px;display:grid;place-items:center;border-top:1px solid #2B2924;border-bottom:1px solid #2B2924">
+    <video id="bandVideo" autoplay loop muted playsinline preload="auto" poster="/assets/band-poster.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.62">
+      <source src="/assets/band-loop.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,26,23,0.55),rgba(27,26,23,0.3) 45%,rgba(27,26,23,0.7))"></div>
+    <p id="bandText" style="position:relative;margin:0;padding:72px 40px;max-width:1280px;text-align:center;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(28px,3.6vw,50px);line-height:1.12;letter-spacing:-0.025em;color:#FFF6EE;text-shadow:0 2px 24px rgba(0,0,0,0.45);text-wrap:pretty"></p>
   </section>
 
   <section style="max-width:1180px;margin:0 auto;padding:88px 32px">
@@ -325,7 +326,7 @@
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,249,242,0.28);display:grid;gap:12px">
           <p style="margin:0;font-size:16px;color:#FBE3D8;line-height:1.5">
             <span data-i18n="creatorPrompt"></span>
-            <a href="creators.html" data-i18n="creatorLink" style="color:#FFF9F2;font-weight:700;text-decoration:underline;text-underline-offset:3px"></a>
+            <a href="/creators.html" data-i18n="creatorLink" style="color:#FFF9F2;font-weight:700;text-decoration:underline;text-underline-offset:3px"></a>
           </p>
           <p style="margin:0;font-size:16px;color:#FBE3D8;line-height:1.5">
             <span data-i18n="emailPrompt"></span>
@@ -374,7 +375,7 @@
         <a href="/cookies.html" class="footlink" data-i18n="navCookies"></a>
         <a href="#price" class="footlink" data-i18n="navPrice"></a>
         <a href="#faq" class="footlink" data-i18n="navFaq"></a>
-        <a href="blog/index.html" class="footlink" data-i18n="navBlog"></a>
+        <a href="/blog/index.html" class="footlink" data-i18n="navBlog"></a>
       </div>
       <span class="footer-wordmark" style="display:block">youpi<span style="color:#C13F22">go</span></span>
       <div class="foot-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:32px;padding-top:22px;font-size:13px;line-height:1.55;color:#9A9288">
@@ -393,91 +394,90 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/xjyblgzv";
 
 const COPY = {
   en: {
-    navHow: "How it works", navReport: "Reporting", navPrice: "Pricing", navFaq: "FAQ", navBlog: "Blog", navCreators: "For creators", navPrivacy: "Privacy Policy", navTerms: "Terms", navCookies: "Cookie Policy",
-    joinHeading: "Two ways onto the platform",
-    joinVenueLabel: "For venues", joinVenueTitle: "Register your restaurant or café", joinVenueBody: "Get a rotating line-up of local creators every month — sourcing, scheduling and reporting handled for you.", joinVenueCta: "Register your venue",
-    joinCreatorLabel: "For creators", joinCreatorTitle: "Join as a food creator", joinCreatorBody: "Get matched with venues near you, visit on your own schedule and grow your audience with content you already make.", joinCreatorCta: "Apply as a creator",
+    navHow: "How it works", navReport: "Report", navPrice: "Price", navFaq: "FAQ", navBlog: "Blog", navCreators: "For bloggers", navPrivacy: "Privacy Policy", navTerms: "Terms", navCookies: "Cookie Policy",
+    joinHeading: "Two ways to start",
+    joinVenueLabel: "For places", joinVenueTitle: "Add your restaurant or café", joinVenueBody: "New local bloggers every month. We find them, plan the visits, send the report.", joinVenueCta: "Add your place",
+    joinCreatorLabel: "For bloggers", joinCreatorTitle: "Join as a food blogger", joinCreatorBody: "Get invites to places near you, go when you want, grow your audience.", joinCreatorCta: "Join as a blogger",
     consentText: 'I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
-    cta: "Book a demo", ctaSecondary: "See how it works first", ctaPlan: "Discuss on a demo",
-    heroA: "Influencers bring you guests", heroB: "—", heroAccent: "every month, on autopilot",
-    heroLead: "We find local food creators, agree the terms, spread their visits across the month and send you one clear report. All you provide is a table and a few words about the kitchen.",
-    flowTitle: "Your place, rediscovered month after month",
-    flowLead: "Not a one-off blast but a rhythm: a rotating cast of neighbourhood voices keeps introducing your kitchen to people who have not tried it yet.",
+    cta: "Book a free call", ctaSecondary: "First, see how it works", ctaPlan: "Talk on a call",
+    forWho: "For cafés, restaurants and other venues",
+    heroA: "Local food bloggers", heroB: "bring you new guests", heroAccent: "every month",
+    heroLead: "We find good local bloggers, invite them to your place, plan their visits, and send you one simple report. You just give a table and a few words about your food.",
+    flowTitle: "New bloggers every month",
+    flowLead: "Not one campaign — a steady flow. New people, more views, no work for you.",
     flowRows: [
-      { t: "A rotating cast, not the same faces", d: "Around five different local creators come by each month, so the audience keeps widening instead of repeating." },
-      { t: "7–10 fresh videos on local feeds", d: "Real, in-their-own-words content about your food — filmed and published within the month." },
-      { t: "Reach that climbs month over month", d: "Every new wave of posts adds to the last, so your total local views keep growing instead of resetting to zero." },
-      { t: "Awareness that sticks to the area", d: "Posts keep resurfacing long after they go live, so the neighbourhood keeps discovering you with no ad spend." },
-      { t: "Run end to end for you", d: "Sourcing, outreach, scheduling and reporting are ours. You just open the door." }
+      { t: "5 new bloggers a month", d: "A fresh local blogger comes, films and posts — never the same faces." },
+      { t: "Fresh videos, never the same content", d: "New videos about your food every month, not one repeated ad." },
+      { t: "No-show? We replace them", d: "If a blogger does not come, we swap in another — no extra cost." },
+      { t: "Reach your audience through content", d: "Your future guests find you through people they already trust." }
     ],
-    howTitle: "How it works with us",
-    howLead: "Four steps. Three of them are on our side, and we never ask you to approve things in group chats.",
-    howNote: "Only the first step needs you — after that you simply watch.",
-    s1Label: "5-minute brief", s1Title: "You fill in a short brief about your venue — once",
-    s1Body: "To work well we need to know your venue, your kitchen, the dates creators can visit, and your terms.",
-    s2Label: "this month’s line-up", s2Title: "We build the line-up and show you the list",
-    s2Body: "From your city, with a real audience. Crossing someone off is perfectly fine.", removed: "removed",
-    s3Label: "schedule", s3Title: "We spread visits across the days",
-    s3Body: "Your host gets the list in advance. The kitchen never faces five shoots on one Friday.",
+    howTitle: "How it works",
+    howLead: "Four steps. Three are on us. You just approve the options in chat.",
+    howNote: "Only step one needs you. Then you just watch.",
+    s1Label: "5-minute form", s1Title: "You fill one short form — once",
+    s1Body: "Tell us your place, your food, the days bloggers can come, and your terms.",
+    s2Label: "this month list", s2Title: "We pick bloggers and show you the list",
+    s2Body: "Local people with a real audience. You can remove anyone.", removed: "removed",
+    s3Label: "schedule", s3Title: "We spread visits over the month",
+    s3Body: "Your team gets the list early. No five shoots on one day.",
     slots: ["Thu 12 · 7:40pm", "Sat 14 · breakfast", "Tue 17 · lunch", "+6"],
-    s4Label: "end of month", s4Title: "We send a single report",
-    s4Body: "What went out, how many people saw it, what they saved — one file, no screenshots in chat.",
-    s4Link: "See what it looks like →",
-    swapLabel: "a no-show is not your problem", swapTitle: "We replace the creator the same month, at no extra cost",
-    statLabel1: "Your involvement per month", statValue1: "5 minutes on a brief",
-    statLabel2: "Messages with creators", statValue2: "zero",
-    bandA: "Creators recommend", bandLocal: "locally", bandB: "— business grows", bandGlobal: "globally",
-    reportTitle: "You get a transparent report at the end of every month, or whenever you ask",
-    reportLead: "One document at the end of the month: who came, what they published, how many people saw it.",
-    reportBullets: ["Links to every post — live, not screenshots", "Reach and saves for each creator", "What worked and what did not, in plain language", "A plan for next month based on it"],
-    reportCardTitle: "August · Polka Coffee", reportCardVisits: "9 visits",
-    thCreator: "Creator", thFormat: "Format", thReach: "Reach",
+    s4Label: "end of month", s4Title: "We send one report",
+    s4Body: "What was posted and how many people saw it — one file, no chat screenshots.",
+    s4Link: "See an example →",
+    swapLabel: "a no-show is not your problem", swapTitle: "If someone does not come, we replace them the same month — free.",
+    statLabel1: "Your time a month", statValue1: "5 minutes",
+    statLabel2: "Chats with bloggers", statValue2: "none",
+    bandA: "Influencers advertise", bandLocal: "locally", bandB: "— reach grows", bandGlobal: "globally",
+    reportTitle: "You get a clear report every month",
+    reportLead: "One file at the end of the month: who came, what they posted, how many people saw it.",
+    reportBullets: ["Links to every post — real, not screenshots", "Views and saves for each blogger", "What worked and what did not, in plain words", "A plan for next month"],
+    reportCardTitle: "August · Marlow Coffee", reportCardVisits: "9 visits",
+    thCreator: "Blogger", thFormat: "Type", thReach: "Views",
     reportRows: [
-      { who: "@ne.pro.edu", fmt: "Reels", reach: "31,400" },
-      { who: "@zavtrak.tut", fmt: "Post", reach: "12,780" },
-      { who: "@kofe.i.ryadom", fmt: "Stories ×4", reach: "8,210" },
-      { who: "6 more creators", fmt: "—", reach: "41,060" }
+      { who: "@dubai.bites", fmt: "Reels", reach: "31,400" },
+      { who: "@brunch.lea", fmt: "Post", reach: "12,780" },
+      { who: "@eats.omar", fmt: "Stories ×4", reach: "8,210" },
+      { who: "6 more bloggers", fmt: "—", reach: "41,060" }
     ],
-    photoCaption: "Marina, second shift",
-    quote: "“I used to spend a whole evening messaging people and end up with one story. Now I just see who is coming on Thursday and read the report at the end of the month. May brought more new guests than paid ads did.”",
-    quoteAuthor: "Marina Kovaleva — manager, Polka Coffee, Kazan",
-    priceTitle: "What it costs",
-    priceLead: "One fixed subscription. Creator fees, coordination and the monthly report are all included — nothing to top up along the way.",
+    photoCaption: "Layla, evening shift",
+    quote: "Before, I spent whole evenings writing to people for one story. Now I just see who comes on Thursday and read one report at the end of the month. It brought more new guests than paid ads.",
+    quoteAuthor: "Layla — manager, Marlow Coffee, Dubai",
+    priceTitle: "Price",
+    priceLead: "One fixed price a month. Bloggers, planning and the report are all included. Nothing extra later.",
+    planLabel: "All included", perMonth: " / month", inclTitle: "What's inside",
     billMonthly: "Monthly", billYearly: "Yearly", billSave: "Save 17%",
-    planLabel: "Everything included", perMonth: " / month", inclTitle: "What's included",
     priceMonthly: "$300", priceYearly: "$250",
-    billedMonthly: "Billed monthly · cancel anytime", billedYearly: "$3,000 billed once a year · save $600",
-    planBody: "Everything to bring local creators through your doors, month after month:",
+    billedMonthly: "Paid monthly · cancel anytime", billedYearly: "$3,000 once a year · save $600",
     planFeatures: [
-      "6–10 local food creators every month",
-      "We find, vet and schedule everyone for you",
-      "You approve every creator before they visit",
-      "A clear report after every month",
-      "No-shows replaced at no extra cost",
+      "6–10 local bloggers a month",
+      "We find, check and plan everyone",
+      "You okay each blogger before they come",
+      "A clear report every month",
+      "No-shows swapped for free",
     ],
-    priceNote: "The first month is a trial: if you do not like the line-up, we stop after it — no renewal conversations.",
-    faqTitle: "Questions we get in the first five minutes",
-    demoTitle: "Let us see which creators in your city already eat at your place",
-    demoLead: "On the demo we show real profiles from your city, last month’s schedule for a similar venue, and a full report. No decision needed on the call.",
-    demoNote: "We reply within a day. We write instead of calling ten times.",
-    creatorPrompt: "Are you a creator, not a venue?",
+    priceNote: "First month is a trial. Do not like it? We stop. No talk about renewing.",
+    creatorPrompt: "A blogger, not a place?",
     creatorLink: "Apply on the creators page →",
-    emailPrompt: "Prefer email? Write to us:",
-    sentTitle: "Got it — your request is in",
-    sentBody: "We will write within a day and send a couple of profiles from your city, so the call has something concrete in it.",
-    fVenue: "Venue", pVenue: "Marlow Coffee", fCountry: "Country", countryPlaceholder: "Select your country",
+    emailPrompt: "Prefer email? Write us:",
+    faqTitle: "Quick questions",
+    demoTitle: "See which bloggers near you already eat at your place",
+    demoLead: "On the call we show real local profiles, a past plan for a place like yours, and a full report. You decide nothing on the call.",
+    demoNote: "We reply in one day. We write, not call ten times.",
+    sentTitle: "Done — we got it",
+    sentBody: "We will write in one day with a few local profiles and next steps.",
+    fVenue: "Your place", pVenue: "Marlow Coffee", fCountry: "Country", countryPlaceholder: "Choose your country",
     fName: "Your name", pName: "Layla", fContact: "Phone or Telegram", pContact: "@layla or +971…", contactTitle: "Enter a Telegram @username (e.g. @layla) or a phone number with country code (e.g. +971 50 123 4567).",
-    formNote: "No newsletters, no selling your data. One message, on the point.",
-    formError: "Something went wrong. Please write to hi@influencehub.ru.",
+    formNote: "No spam. We do not sell your data. One message, to the point.",
+    formError: "Something went wrong. Please write to hi@influencehub.ae.",
     copyright: "2026 © Influence Hub, all rights reserved",
-    disclaimer: "Influence Hub organises visits by local content creators. Reach figures and visit counts shown here are examples, not an offer or a guarantee of results.",
+    disclaimer: "Influence Hub arranges visits by local food bloggers. The views and visit numbers shown here are examples, not a promise.",
     faq: [
-      ["We do not want an ad tone. Will creators label it as a sponsored post?", "No. We work with people who shoot food for their own audience and ask them to speak in their own words. The partnership disclosure is there as required by law, but the writing stays human."],
-      ["What if a creator comes, eats and posts nothing?", "That is on us: terms are fixed before the visit and we verify the post. If nothing goes out, we replace the creator the same month at no extra cost."],
-      ["How much time does this take from a manager?", "Five minutes on the brief up front, plus a weekly visit list for your host. Beyond that you are involved only if you want to be."],
-      ["How do we know it brought guests, not just reach?", "Alongside reach the report tracks what actually moved: map clicks, bookings, demand for specific dishes. If nothing moved, we say so plainly."],
-      ["We are a small coffee shop in a residential area. Is it worth it?", "Usually yes: local creators work better for a neighbourhood than city-wide accounts. If your city lacks the right people, we will tell you on the demo and not take your money."],
-      ["Contract, invoice, closing documents?", "We work under a contract with your company, and send the invoice and paperwork at the start of the month. Creator fees are paid by us."]
+      ["Will it look like an ad?", "No. Bloggers use their own words. We add the label the law needs, but the post stays natural."],
+      ["A blogger eats and posts nothing — then what?", "That is on us. We check the post. If nothing comes out, we replace them the same month, free."],
+      ["How much of my time?", "Five minutes for the form, plus a weekly visit list for your team. That is it."],
+      ["Does it bring guests, not just views?", "The report shows real actions: map clicks, bookings, popular dishes. If nothing moved, we tell you."],
+      ["Small café in a quiet area — worth it?", "Usually yes. Local bloggers beat big city accounts. If your city has too few, we tell you and do not take your money."],
+      ["Contract and invoice?", "Yes. We work by contract and send the invoice at the start of the month. We pay the bloggers."]
     ]
   },
   ru: {
@@ -487,6 +487,7 @@ const COPY = {
     joinCreatorLabel: "Для авторов", joinCreatorTitle: "Стать фуд-креатором", joinCreatorBody: "Подберём заведения рядом с вами, ходите по своему графику и растите аудиторию на контенте, который и так снимаете.", joinCreatorCta: "Стать креатором",
     consentText: 'Я даю согласие на обработку моих персональных данных в соответствии с <a href="/privacy.html" target="_blank" rel="noopener">Политикой конфиденциальности</a>.',
     cta: "Записаться на демо", ctaSecondary: "Сначала посмотреть, как это устроено", ctaPlan: "Обсудить на демо",
+    forWho: "Кафе, рестораны и другие заведения",
     heroA: "Инфлюенсеры приводят вам гостей", heroB: "—", heroAccent: "каждый месяц, на автопилоте",
     heroLead: "Мы находим локальных авторов про еду, договариваемся, разводим их по дням и присылаем один понятный отчёт. С вас — стол и пара слов о кухне.",
     flowTitle: "Ваше заведение открывают заново — месяц за месяцем",
@@ -521,36 +522,35 @@ const COPY = {
     reportCardTitle: "Август · кофейня «Полка»", reportCardVisits: "9 визитов",
     thCreator: "Автор", thFormat: "Формат", thReach: "Охват",
     reportRows: [
-      { who: "@ne.pro.edu", fmt: "Reels", reach: "31 400" },
-      { who: "@zavtrak.tut", fmt: "Пост", reach: "12 780" },
-      { who: "@kofe.i.ryadom", fmt: "Сторис ×4", reach: "8 210" },
+      { who: "@dubai.bites", fmt: "Reels", reach: "31 400" },
+      { who: "@brunch.lea", fmt: "Пост", reach: "12 780" },
+      { who: "@eats.omar", fmt: "Сторис ×4", reach: "8 210" },
       { who: "ещё 6 авторов", fmt: "—", reach: "41 060" }
     ],
     photoCaption: "Марина, вторая смена",
     quote: "«Раньше я тратила вечер на переписку и получала одну сторис. Теперь просто вижу в расписании, кто придёт в четверг, и в конце месяца читаю отчёт. За май пришло больше новых гостей, чем от таргета.»",
     quoteAuthor: "Марина Ковалёва — управляющая кофейни «Полка», Казань",
     priceTitle: "Сколько это стоит",
-    priceLead: "Одна фиксированная подписка. Гонорары авторов, согласования и ежемесячный отчёт уже внутри — доплачивать по ходу не придётся.",
-    billMonthly: "Помесячно", billYearly: "На год", billSave: "−17%",
+    priceLead: "Фиксированная подписка за месяц. Гонорары авторов, согласования и отчёт уже внутри — доплачивать по ходу не придётся.",
     planLabel: "Всё включено", perMonth: " / месяц", inclTitle: "Что входит",
+    billMonthly: "Помесячно", billYearly: "На год", billSave: "−17%",
     priceMonthly: "$300", priceYearly: "$250",
     billedMonthly: "Оплата помесячно · отмена в любой момент", billedYearly: "$3 000 разово за год · экономия $600",
-    planBody: "Всё, чтобы приводить локальных авторов к вам каждый месяц:",
     planFeatures: [
-      "6–10 локальных фуд-авторов каждый месяц",
+      "6–10 локальных авторов каждый месяц",
       "Находим, проверяем и ставим в расписание",
       "Каждого автора вы согласуете заранее",
       "Понятный отчёт после каждого месяца",
       "Замена тех, кто не пришёл, без доплат",
     ],
     priceNote: "Первый месяц — пробный: не понравится состав авторов, останавливаемся после него без разговоров про «продление».",
+    creatorPrompt: "Вы автор, а не заведение?",
+    creatorLink: "Оставить заявку на странице для авторов →",
+    emailPrompt: "Удобнее почтой? Напишите нам:",
     faqTitle: "Вопросы, которые нам задают в первые пять минут",
     demoTitle: "Посмотрим, кто из авторов в вашем городе уже ходит к вам обедать",
     demoLead: "На демо покажем реальные профили из вашего города, расписание прошлого месяца у похожего заведения и отчёт целиком. Решать ничего сразу не нужно.",
     demoNote: "Отвечаем в течение дня. Не звоним по десять раз — пишем.",
-    creatorPrompt: "Вы автор, а не заведение?",
-    creatorLink: "Оставить заявку на странице для авторов →",
-    emailPrompt: "Удобнее почтой? Напишите нам:",
     sentTitle: "Готово, заявка у нас",
     sentBody: "Напишем в течение дня и сразу пришлём пару профилей из вашего города — чтобы было о чём говорить на созвоне.",
     fVenue: "Заведение", pVenue: "Marlow Coffee", fCountry: "Страна", countryPlaceholder: "Выберите страну",
@@ -594,7 +594,7 @@ function render() {
   });
 
   document.getElementById("heroTitle").innerHTML =
-    esc(t.heroA) + ' <span class="hero-pill"><img src="./assets/hero-pill-bite.jpg" alt="" onerror="this.style.display=\'none\'"></span> ' +
+    esc(t.heroA) + ' <span class="hero-pill"><img src="/assets/hero-pill-bite.jpg" alt="" onerror="this.style.display=\'none\'"></span> ' +
     esc(t.heroB) + ' <em style="font-style:normal;color:#C13F22">' + esc(t.heroAccent) + '</em>';
 
   document.getElementById("bandText").innerHTML =
@@ -603,7 +603,7 @@ function render() {
 
   document.getElementById("flowRows").innerHTML = t.flowRows.map(r =>
     '<div style="background:#FBF6EC;padding:24px 28px">' +
-      '<p style="margin:0 0 6px;font-family:\'Bricolage Grotesque\',Georgia,sans-serif;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em">' + esc(r.t) + '</p>' +
+      '<p style="margin:0 0 6px;display:flex;gap:10px;align-items:baseline;font-family:\'Bricolage Grotesque\',Georgia,sans-serif;font-weight:600;font-size:19px;line-height:1.3;letter-spacing:-0.02em"><span style="color:#C13F22;flex-shrink:0">✓</span><span>' + esc(r.t) + '</span></p>' +
       '<p style="margin:0;color:#4A453C;font-size:16px;line-height:1.6">' + esc(r.d) + '</p>' +
     '</div>').join("");
 
@@ -611,7 +611,7 @@ function render() {
     '<span style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:999px;padding:8px 14px;font-size:15px">' + esc(s) + '</span>').join("");
 
   document.getElementById("reportBullets").innerHTML = t.reportBullets.map(b =>
-    '<li style="display:flex;gap:12px;align-items:baseline"><span style="color:#E8724F">—</span> ' + esc(b) + '</li>').join("");
+    '<li style="display:flex;gap:12px;align-items:baseline"><span style="color:#E8724F">✓</span> ' + esc(b) + '</li>').join("");
 
   document.getElementById("reportRows").innerHTML = t.reportRows.map(r =>
     '<div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,0.8fr) minmax(0,0.8fr);padding:13px 0;border-bottom:1px solid #EFE6D6;font-size:16px">' +
