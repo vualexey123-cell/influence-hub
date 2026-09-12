@@ -47,6 +47,27 @@
   .card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.45); }
   .plan-card { transition:transform 220ms ease, box-shadow 220ms ease; }
   .plan-card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.55); }
+  .price-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); max-width:940px; margin:0 auto; border:1px solid #E2D8C6; border-radius:26px; overflow:hidden; box-shadow:0 34px 70px -44px rgba(27,26,23,0.55); }
+  .price-left { background:#1B1A17; color:#F5EFE4; padding:46px 44px; display:flex; flex-direction:column; }
+  .price-right { background:#FBF6EC; padding:46px 44px; }
+  .price-label { margin:0 0 16px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#B5AC9F; }
+  .price-amount { font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:700; font-size:clamp(46px,5.2vw,62px); line-height:1; letter-spacing:-0.03em; margin:0 0 8px; white-space:nowrap; }
+  .price-amount .per { font-family:'Manrope',sans-serif; font-weight:500; font-size:18px; color:#B5AC9F; }
+  .price-billed { margin:0 0 26px; color:#B5AC9F; font-size:15px; min-height:1.1em; }
+  .bill-toggle { display:inline-flex; align-self:flex-start; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:5px; gap:4px; margin:0 0 30px; }
+  .bill-btn { border:0; background:transparent; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; padding:9px 18px; border-radius:999px; color:#E4DCCE; display:inline-flex; align-items:center; gap:8px; transition:background 180ms ease, color 180ms ease; }
+  .bill-btn.active { background:#FFF9F2; color:#1B1A17; }
+  .bill-btn:not(.active):hover { color:#FFF9F2; }
+  .bill-save { background:#C13F22; color:#FFF9F2; font-size:11px; font-weight:700; padding:3px 7px; border-radius:999px; letter-spacing:0; }
+  .bill-btn.active .bill-save { background:#C13F22; color:#FFF9F2; }
+  .cta-full { display:block; text-align:center; background:#C13F22; color:#FFF9F2; padding:16px 24px; border-radius:999px; font-weight:600; font-size:16px; margin-top:auto; transition:background 200ms ease; }
+  .cta-full:hover { background:#E8724F; color:#FFF9F2; }
+  .price-trial { margin:18px 0 0; font-size:13.5px; line-height:1.55; color:#9A9186; }
+  .incl-title { margin:0 0 22px; font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.01em; color:#1B1A17; }
+  .price-feats { list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+  .price-feats li { display:flex; gap:13px; align-items:flex-start; font-size:16px; line-height:1.45; color:#3D392F; }
+  .price-feats .ck { flex-shrink:0; width:22px; height:22px; border-radius:50%; background:rgba(193,63,34,0.12); color:#C13F22; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; margin-top:1px; }
+  @media (max-width:820px) { .price-card { grid-template-columns:1fr; } .price-left, .price-right { padding:38px 30px; } }
   .faq-btn:hover { color:#C13F22 !important; }
   .input:focus { border-color:#C13F22; outline:none; }
   .footlink { color:#B5AC9F; }
@@ -271,21 +292,23 @@
         <h2 data-i18n="priceTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(29px,3vw,42px);line-height:1.06;letter-spacing:-0.025em;margin:0"></h2>
         <p data-i18n="priceLead" style="color:#4A453C;font-size:19px;margin:0;max-width:520px"></p>
       </div>
-      <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px">
-        <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:18px;padding:32px">
-          <p data-i18n="plan1Label" style="margin:0 0 8px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em"></p>
-          <p id="plan1Price" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(26px,2.4vw,32px);letter-spacing:-0.02em;margin:0 0 4px;white-space:nowrap"></p>
-          <p data-i18n="plan1Body" style="margin:0 0 20px;color:#5F594E;font-size:16px"></p>
-          <a href="#demo" class="btn-primary" data-i18n="ctaPlan" style="display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      <div class="price-card">
+        <div class="price-left">
+          <p data-i18n="planLabel" class="price-label"></p>
+          <p id="planPrice" class="price-amount"></p>
+          <p id="planBilled" class="price-billed"></p>
+          <div class="bill-toggle" id="billToggle">
+            <button type="button" class="bill-btn active" data-bill="monthly" data-i18n="billMonthly"></button>
+            <button type="button" class="bill-btn" data-bill="yearly"><span data-i18n="billYearly"></span><span data-i18n="billSave" class="bill-save"></span></button>
+          </div>
+          <a href="#demo" class="cta-full" data-i18n="ctaPlan"></a>
+          <p data-i18n="priceNote" class="price-trial"></p>
         </div>
-        <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:18px;padding:32px">
-          <p data-i18n="plan2Label" style="margin:0 0 8px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em"></p>
-          <p id="plan2Price" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(26px,2.4vw,32px);letter-spacing:-0.02em;margin:0 0 4px;white-space:nowrap"></p>
-          <p data-i18n="plan2Body" style="margin:0 0 20px;color:#5F594E;font-size:16px"></p>
-          <a href="#demo" class="btn-dark-outline" data-i18n="ctaPlan" style="display:inline-block;border:1px solid #1B1A17;color:#1B1A17;padding:13px 24px;border-radius:999px;font-weight:600;font-size:16px"></a>
+        <div class="price-right">
+          <p data-i18n="inclTitle" class="incl-title"></p>
+          <ul id="planFeatures" class="price-feats"></ul>
         </div>
       </div>
-      <p data-i18n="priceNote" style="margin:22px 0 0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-size:18px;color:#C13F22;max-width:640px"></p>
     </div>
   </section>
 
@@ -302,6 +325,16 @@
         <h2 data-i18n="demoTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(32px,3.3vw,46px);line-height:1.04;letter-spacing:-0.025em;margin:0 0 18px;text-wrap:pretty"></h2>
         <p data-i18n="demoLead" style="font-size:19px;line-height:1.5;margin:0 0 26px;color:#FBE3D8;max-width:480px"></p>
         <p data-i18n="demoNote" style="margin:0;font-size:16px;color:#F6CDBD"></p>
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,249,242,0.28);display:grid;gap:12px">
+          <p style="margin:0;font-size:16px;color:#FBE3D8;line-height:1.5">
+            <span data-i18n="creatorPrompt"></span>
+            <a href="/creators.html" data-i18n="creatorLink" style="color:#FFF9F2;font-weight:700;text-decoration:underline;text-underline-offset:3px"></a>
+          </p>
+          <p style="margin:0;font-size:16px;color:#FBE3D8;line-height:1.5">
+            <span data-i18n="emailPrompt"></span>
+            <a href="mailto:hi@influencehub.ae" style="color:#FFF9F2;font-weight:700;text-decoration:underline;text-underline-offset:3px">hi@influencehub.ae</a>
+          </p>
+        </div>
       </div>
       <div id="sentBlock" class="hidden" style="background:#FBF6EC;color:#1B1A17;border-radius:18px;padding:36px">
         <p id="sentTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.02em;margin:0 0 10px"></p>
@@ -414,11 +447,21 @@ const COPY = {
     quoteAuthor: "Layla — manager, Marlow Coffee, Dubai",
     priceTitle: "Price",
     priceLead: "One fixed price a month. Bloggers, planning and the report are all included. Nothing extra later.",
-    plan1Label: "One place", plan1Price: "from $590", perMonth: " / month",
-    plan1Body: "6–10 bloggers a month, planning, report, free replacements.",
-    plan2Label: "2–6 places", plan2Price: "from $990",
-    plan2Body: "Different bloggers for each place, one report, one manager.",
+    planLabel: "All included", perMonth: " / month", inclTitle: "What's inside",
+    billMonthly: "Monthly", billYearly: "Yearly", billSave: "Save 17%",
+    priceMonthly: "$300", priceYearly: "$250",
+    billedMonthly: "Paid monthly · cancel anytime", billedYearly: "$3,000 once a year · save $600",
+    planFeatures: [
+      "6–10 local bloggers a month",
+      "We find, check and plan everyone",
+      "You okay each blogger before they come",
+      "A clear report every month",
+      "No-shows swapped for free",
+    ],
     priceNote: "First month is a trial. Do not like it? We stop. No talk about renewing.",
+    creatorPrompt: "A blogger, not a place?",
+    creatorLink: "Apply on the creators page →",
+    emailPrompt: "Prefer email? Write us:",
     faqTitle: "Quick questions",
     demoTitle: "See which bloggers near you already eat at your place",
     demoLead: "On the call we show real local profiles, a past plan for a place like yours, and a full report. You decide nothing on the call.",
@@ -492,11 +535,21 @@ const COPY = {
     quoteAuthor: "Марина Ковалёва — управляющая кофейни «Полка», Казань",
     priceTitle: "Сколько это стоит",
     priceLead: "Фиксированная подписка за месяц. Гонорары авторов, согласования и отчёт уже внутри — доплачивать по ходу не придётся.",
-    plan1Label: "Одно заведение", plan1Price: "от $590", perMonth: " / месяц",
-    plan1Body: "6–10 авторов в месяц, расписание, отчёт, замена тех, кто не пришёл.",
-    plan2Label: "Локальная сеть, 2–6 точек", plan2Price: "от $990",
-    plan2Body: "Разные составы под точки и районы, сводный отчёт по сети, один менеджер на всё.",
+    planLabel: "Всё включено", perMonth: " / месяц", inclTitle: "Что входит",
+    billMonthly: "Помесячно", billYearly: "На год", billSave: "−17%",
+    priceMonthly: "$300", priceYearly: "$250",
+    billedMonthly: "Оплата помесячно · отмена в любой момент", billedYearly: "$3 000 разово за год · экономия $600",
+    planFeatures: [
+      "6–10 локальных авторов каждый месяц",
+      "Находим, проверяем и ставим в расписание",
+      "Каждого автора вы согласуете заранее",
+      "Понятный отчёт после каждого месяца",
+      "Замена тех, кто не пришёл, без доплат",
+    ],
     priceNote: "Первый месяц — пробный: не понравится состав авторов, останавливаемся после него без разговоров про «продление».",
+    creatorPrompt: "Вы автор, а не заведение?",
+    creatorLink: "Оставить заявку на странице для авторов →",
+    emailPrompt: "Удобнее почтой? Напишите нам:",
     faqTitle: "Вопросы, которые нам задают в первые пять минут",
     demoTitle: "Посмотрим, кто из авторов в вашем городе уже ходит к вам обедать",
     demoLead: "На демо покажем реальные профили из вашего города, расписание прошлого месяца у похожего заведения и отчёт целиком. Решать ничего сразу не нужно.",
@@ -523,6 +576,7 @@ const COPY = {
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let lang = "en";
 let openFaq = 0;
+let billing = "monthly";
 const COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
 
 function render() {
@@ -569,8 +623,7 @@ function render() {
     '</div>').join("");
 
   document.getElementById("quote").textContent = t.quote;
-  document.getElementById("plan1Price").innerHTML = esc(t.plan1Price) + '<span style="font-family:\'Manrope\',sans-serif;font-weight:500;font-size:16px;color:#7A7369">' + esc(t.perMonth) + '</span>';
-  document.getElementById("plan2Price").innerHTML = esc(t.plan2Price) + '<span style="font-family:\'Manrope\',sans-serif;font-weight:500;font-size:16px;color:#7A7369">' + esc(t.perMonth) + '</span>';
+  renderPrice();
 
   document.getElementById("sentTitle").textContent = t.sentTitle;
   document.getElementById("sentBody").textContent = t.sentBody;
@@ -581,6 +634,19 @@ function render() {
 
   document.getElementById("btnEn").classList.toggle("active", lang === "en");
   document.getElementById("btnRu").classList.toggle("active", lang === "ru");
+}
+
+function renderPrice() {
+  const t = COPY[lang];
+  const price = billing === "yearly" ? t.priceYearly : t.priceMonthly;
+  const billed = billing === "yearly" ? t.billedYearly : t.billedMonthly;
+  document.getElementById("planPrice").innerHTML = esc(price) +
+    '<span class="per">' + esc(t.perMonth) + '</span>';
+  document.getElementById("planBilled").textContent = billed;
+  document.getElementById("planFeatures").innerHTML = (t.planFeatures || []).map(f =>
+    '<li><span class="ck">✓</span>' + esc(f) + '</li>').join("");
+  document.querySelectorAll(".bill-btn").forEach(b =>
+    b.classList.toggle("active", b.getAttribute("data-bill") === billing));
 }
 
 function renderFaq() {
@@ -629,6 +695,10 @@ function setLang(l) {
 
   document.getElementById("btnEn").addEventListener("click", () => setLang("en"));
   document.getElementById("btnRu").addEventListener("click", () => setLang("ru"));
+
+  document.querySelectorAll(".bill-btn").forEach(btn => {
+    btn.addEventListener("click", () => { billing = btn.getAttribute("data-bill"); renderPrice(); });
+  });
 
   const v = document.getElementById("bandVideo");
   if (v) {
