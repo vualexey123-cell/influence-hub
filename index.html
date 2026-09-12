@@ -47,7 +47,7 @@
   .plan-card { transition:transform 220ms ease, box-shadow 220ms ease; }
   .plan-card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.55); }
   .bill-btn { transition:background 180ms ease, color 180ms ease; }
-  .bill-btn.active { background:#1B1A17; color:#FFF9F2 !important; }
+  .bill-btn.active { background:#1B1A17 !important; color:#FFF9F2 !important; }
   .bill-btn:not(.active):hover { color:#C13F22; }
   .faq-btn:hover { color:#C13F22 !important; }
   .input:focus { border-color:#C13F22; outline:none; }
@@ -278,12 +278,13 @@
           <button type="button" class="bill-btn" data-bill="yearly" style="border:0;background:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:10px 22px;border-radius:999px;color:#1B1A17;display:inline-flex;align-items:center;gap:8px"><span data-i18n="billYearly"></span><span data-i18n="billSave" style="background:#C13F22;color:#FFF9F2;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px"></span></button>
         </div>
       </div>
-      <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:40px 40px 36px;max-width:520px;margin:0 auto;text-align:center">
-        <p data-i18n="planLabel" style="margin:0 0 14px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em"></p>
-        <p id="planPrice" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(40px,5vw,56px);letter-spacing:-0.03em;line-height:1;margin:0 0 8px;white-space:nowrap"></p>
-        <p id="planBilled" style="margin:0 0 22px;color:#7A7369;font-size:15px"></p>
-        <p data-i18n="planBody" style="margin:0 auto 28px;color:#5F594E;font-size:16px;max-width:400px"></p>
-        <a href="#demo" class="btn-primary" data-i18n="ctaPlan" style="display:inline-block;padding:14px 32px;border-radius:999px;font-weight:600;font-size:16px"></a>
+      <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:40px 40px 36px;max-width:540px;margin:0 auto">
+        <p data-i18n="planLabel" style="margin:0 0 14px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em;text-align:center"></p>
+        <p id="planPrice" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(40px,5vw,56px);letter-spacing:-0.03em;line-height:1;margin:0 0 8px;white-space:nowrap;text-align:center"></p>
+        <p id="planBilled" style="margin:0 0 22px;color:#7A7369;font-size:15px;text-align:center"></p>
+        <p data-i18n="planBody" style="margin:0 0 22px;padding-top:22px;border-top:1px solid #E2D8C6;color:#5F594E;font-size:16px;text-align:center"></p>
+        <ul id="planFeatures" style="list-style:none;margin:0 0 30px;padding:0;display:grid;gap:14px"></ul>
+        <div style="text-align:center"><a href="#demo" class="btn-primary" data-i18n="ctaPlan" style="display:inline-block;padding:14px 40px;border-radius:999px;font-weight:600;font-size:16px"></a></div>
       </div>
       <p data-i18n="priceNote" style="margin:26px auto 0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-size:18px;color:#C13F22;max-width:640px;text-align:center"></p>
     </div>
@@ -418,7 +419,14 @@ const COPY = {
     planLabel: "Everything included", perMonth: " / month",
     priceMonthly: "$300", priceYearly: "$250",
     billedMonthly: "Billed monthly · cancel anytime", billedYearly: "$3,000 billed once a year · save $600",
-    planBody: "Creators every month, scheduling, the monthly report, and replacements for no-shows.",
+    planBody: "Everything to bring local creators through your doors, month after month:",
+    planFeatures: [
+      "6–10 local food creators every month",
+      "We find, vet and schedule everyone for you",
+      "You approve every creator before they visit",
+      "A clear report after every month",
+      "No-shows replaced at no extra cost",
+    ],
     priceNote: "The first month is a trial: if you do not like the line-up, we stop after it — no renewal conversations.",
     faqTitle: "Questions we get in the first five minutes",
     demoTitle: "Let us see which creators in your city already eat at your place",
@@ -496,7 +504,14 @@ const COPY = {
     planLabel: "Всё включено", perMonth: " / месяц",
     priceMonthly: "$300", priceYearly: "$250",
     billedMonthly: "Оплата помесячно · отмена в любой момент", billedYearly: "$3 000 разово за год · экономия $600",
-    planBody: "Авторы каждый месяц, расписание, ежемесячный отчёт и замена тех, кто не пришёл.",
+    planBody: "Всё, чтобы приводить локальных авторов к вам каждый месяц:",
+    planFeatures: [
+      "6–10 локальных фуд-авторов каждый месяц",
+      "Находим, проверяем и ставим в расписание",
+      "Каждого автора вы согласуете заранее",
+      "Понятный отчёт после каждого месяца",
+      "Замена тех, кто не пришёл, без доплат",
+    ],
     priceNote: "Первый месяц — пробный: не понравится состав авторов, останавливаемся после него без разговоров про «продление».",
     faqTitle: "Вопросы, которые нам задают в первые пять минут",
     demoTitle: "Посмотрим, кто из авторов в вашем городе уже ходит к вам обедать",
@@ -591,6 +606,9 @@ function renderPrice() {
   document.getElementById("planPrice").innerHTML = esc(price) +
     '<span style="font-family:\'Manrope\',sans-serif;font-weight:500;font-size:17px;color:#7A7369">' + esc(t.perMonth) + '</span>';
   document.getElementById("planBilled").textContent = billed;
+  document.getElementById("planFeatures").innerHTML = (t.planFeatures || []).map(f =>
+    '<li style="display:flex;gap:12px;align-items:flex-start;font-size:16px;color:#3D392F">' +
+      '<span style="color:#C13F22;font-weight:800;flex-shrink:0;line-height:1.5">✓</span>' + esc(f) + '</li>').join("");
   document.querySelectorAll(".bill-btn").forEach(b =>
     b.classList.toggle("active", b.getAttribute("data-bill") === billing));
 }
