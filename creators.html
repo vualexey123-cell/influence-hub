@@ -6,7 +6,7 @@
 <!-- Cookie consent + analytics -->
 <script src="/consent.js" defer></script>
 <title>For creators — how Influence Hub works</title>
-<meta name="description" content="How Influence Hub works for food creators: get matched with local restaurants and cafés, visit on your own schedule, post content you already make, and grow your audience. Learn how it works and apply.">
+<meta name="description" content="How Influence Hub works for food creators: get matched with local restaurants and cafés, visit on your own schedule, post content you already make, and grow your audience. Free to join.">
 <meta property="og:title" content="For creators — Influence Hub">
 <meta property="og:description" content="Get matched with local venues, visit on your schedule and grow your audience with Influence Hub.">
 <meta property="og:type" content="website">
@@ -19,6 +19,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="blog/blog.css">
+<style>
+  /* ---- creators page ---- */
+  .cr-hero{padding:44px 0 60px}
+  .cr-hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,0.98fr);gap:54px;align-items:center}
+  .cr-hero .eyebrow{font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 16px}
+  .cr-hero h1{font-size:clamp(35px,4.6vw,56px);line-height:1.03;margin:0 0 20px}
+  .cr-hero h1 .u{color:var(--accent)}
+  .cr-hero-sub{font-size:20px;line-height:1.5;color:var(--muted);max-width:520px;margin:0 0 28px}
+  .cr-hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn-lg{padding:15px 28px;font-size:16px}
+  .cr-hero .hero-chips{margin-top:26px}
+
+  .cr-hero-media{position:relative}
+  .cr-hero-media .frame{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 34px 70px -34px rgba(27,26,23,.6);border:1px solid var(--line)}
+  .cr-hero-media img{display:block;width:100%;height:auto;aspect-ratio:10/9;object-fit:cover}
+  .cr-badge{position:absolute;display:flex;gap:12px;align-items:center;background:rgba(251,246,236,.94);backdrop-filter:blur(4px);border:1px solid var(--line);border-radius:16px;padding:12px 16px;box-shadow:0 18px 40px -24px rgba(0,0,0,.55)}
+  .cr-badge .bic{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:rgba(193,63,34,.12);font-size:19px;flex-shrink:0}
+  .cr-badge strong{display:block;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-size:15px;line-height:1.1;color:var(--ink)}
+  .cr-badge em{font-style:normal;color:var(--muted2);font-size:13px}
+  .cr-badge.b1{left:-20px;bottom:26px}
+  .cr-badge.b2{right:-16px;top:26px}
+
+  /* how — timeline-ish steps */
+  .cr-steps{display:grid;gap:14px;counter-reset:cs}
+  .cr-steps .step{position:relative}
+
+  /* apply CTA (dark, two-column) */
+  .cr-apply{background:var(--dark);color:#F5EFE4;margin-top:8px}
+  .cr-apply .wrap{padding:72px 32px}
+  .cr-apply-grid{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:52px;align-items:start}
+  .cr-apply-copy h2{font-size:clamp(28px,3.2vw,42px);color:#FFF6EE;margin:0 0 16px;line-height:1.05}
+  .cr-apply-copy p{color:#C6BDB0;font-size:19px;margin:0 0 26px;max-width:440px}
+  .cr-apply-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+  .cr-apply-list li{display:flex;gap:12px;align-items:flex-start;font-size:17px;color:#E4DCCE}
+  .cr-apply-list .tick{color:var(--accent-soft);font-weight:800;flex-shrink:0}
+  .cr-apply .reg-form{max-width:none;width:100%}
+  .cr-apply .form-ok{max-width:none;width:100%}
+
+  @media (max-width:860px){
+    .cr-hero-grid{grid-template-columns:1fr;gap:36px}
+    .cr-hero-media{order:-1}
+    .cr-badge.b1{left:12px}
+    .cr-badge.b2{right:12px}
+    .cr-apply-grid{grid-template-columns:1fr;gap:32px}
+  }
+  @media (max-width:760px){
+    .cr-hero{padding:28px 0 44px}
+    .cr-hero-sub{font-size:18px}
+    .cr-apply .wrap{padding:52px 18px}
+    .cr-badge strong{font-size:14px}
+  }
+</style>
 </head>
 <body>
 
@@ -26,7 +78,7 @@
   <div class="header-inner">
     <a class="logo" href="index.html" aria-label="Influence Hub"><img src="assets/influence-hub-logo.png" alt="Influence Hub"></a>
     <nav class="header-nav">
-      <a class="nav-link" href="index.html#how">How it works</a>
+      <a class="nav-link" href="#how">How it works</a>
       <a class="nav-link" href="venues.html">For venues</a>
       <a href="blog/index.html">Blog</a>
       <a class="btn btn-primary" href="#apply">Apply now</a>
@@ -35,24 +87,44 @@
 </header>
 
 <main>
-  <section class="wrap blog-hero">
-    <p class="eyebrow">For creators</p>
-    <h1>Eat at great local spots — and grow while you do it</h1>
-    <p>Get invited to good local restaurants and cafés, visit on your own schedule, and post the kind of content you already make.</p>
-    <div style="margin-top:24px"><a class="btn btn-primary" href="#apply">Apply as a creator</a></div>
-    <div class="hero-chips">
-      <span>✓ Free to join</span>
-      <span>🍽️ Meals on the house</span>
-      <span>🎬 Your voice, your rules</span>
+  <section class="cr-hero">
+    <div class="wrap cr-hero-grid">
+      <div class="cr-hero-copy">
+        <p class="eyebrow">For creators</p>
+        <h1>Eat at great local spots — <span class="u">and grow while you do</span></h1>
+        <p class="cr-hero-sub">Get invited to good restaurants and cafés near you, visit on your own schedule, and post the kind of content you already make. Free to join.</p>
+        <div class="cr-hero-cta">
+          <a class="btn btn-primary btn-lg" href="#apply">Apply as a creator</a>
+          <a class="btn btn-ghost btn-lg" href="#how">See how it works</a>
+        </div>
+        <div class="hero-chips">
+          <span>✓ Free to join</span>
+          <span>🍽️ Meals on the house</span>
+          <span>🎬 Your voice, your rules</span>
+        </div>
+      </div>
+      <div class="cr-hero-media">
+        <div class="frame">
+          <img src="assets/creators-bg.png" alt="A creator enjoying a meal at a local restaurant" loading="eager">
+        </div>
+        <div class="cr-badge b1">
+          <span class="bic">🍽️</span>
+          <div><strong>Meals on the house</strong><em>You're a guest, not a customer</em></div>
+        </div>
+        <div class="cr-badge b2">
+          <span class="bic">📈</span>
+          <div><strong>A new venue monthly</strong><em>Fresh content for your feed</em></div>
+        </div>
+      </div>
     </div>
   </section>
 
   <div class="wrap">
 
-    <section class="cr-section" style="border-top:0">
+    <section class="cr-section" id="how" style="border-top:0">
       <h2>How it works for creators</h2>
-      <p class="sub">Five steps. Most of the work is on our side.</p>
-      <div class="steps">
+      <p class="sub">Five steps — and most of the work is on our side.</p>
+      <div class="steps cr-steps">
         <div class="step"><span class="n">1</span><div><h3>Apply once</h3><p>Tell us your handle, your city and a bit about your audience. It takes two minutes.</p></div></div>
         <div class="step"><span class="n">2</span><div><h3>Get matched</h3><p>When a venue near you fits your audience, we invite you — with the details, the terms and what's expected, all upfront.</p></div></div>
         <div class="step"><span class="n">3</span><div><h3>Visit on your schedule</h3><p>Pick a slot that suits you and go. The meal is on the house — you just enjoy it and capture what you'd naturally shoot.</p></div></div>
@@ -93,48 +165,59 @@
       <details><summary>How big does my audience need to be?</summary><p>There's no hard minimum — what matters most is a real, local, engaged audience. Micro-creators are very welcome.</p></details>
     </section>
 
-    <section class="cr-section" id="apply">
-      <h2>Apply as a creator</h2>
-      <p class="sub">Leave your details and we'll reach out when we're onboarding creators in your city.</p>
-      <div id="okBlock" class="form-ok hidden">
-        <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0 0 8px">Thanks — you're on the list</p>
-        <p style="margin:0;color:var(--muted)">We'll be in touch as soon as we're onboarding creators in your city.</p>
-      </div>
-      <form id="regForm" class="reg-form">
-        <input type="hidden" name="type" value="creator">
-        <input type="hidden" name="_subject" value="New creator application — Influence Hub">
-        <label>Your name
-          <input name="name" required placeholder="Layla">
-        </label>
-        <label>Instagram or TikTok
-          <input name="social" required placeholder="@yourhandle or profile link">
-        </label>
-        <label>City &amp; country
-          <input name="location" required placeholder="Dubai, United Arab Emirates">
-        </label>
-        <label>Audience size
-          <select name="audience" required>
-            <option value="" disabled selected>Select your following</option>
-            <option>Under 5,000</option>
-            <option>5,000–20,000</option>
-            <option>20,000–50,000</option>
-            <option>50,000–150,000</option>
-            <option>150,000+</option>
-          </select>
-        </label>
-        <label>Phone or Telegram
-          <input name="contact" required pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" title="Enter a Telegram @username (e.g. @layla) or a phone number with country code (e.g. +971 50 123 4567)." placeholder="@layla or +971…" inputmode="text" autocomplete="off">
-        </label>
-        <label class="consent">
-          <input type="checkbox" name="consent" required value="yes">
-          <span>I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
-        </label>
-        <button type="submit">Apply as a creator</button>
-        <p id="errMsg" class="form-err hidden">Something went wrong. Please write to hi@influencehub.ae.</p>
-      </form>
-    </section>
-
   </div>
+
+  <section class="cr-apply" id="apply">
+    <div class="wrap cr-apply-grid">
+      <div class="cr-apply-copy">
+        <h2>Apply as a creator</h2>
+        <p>Leave your details and we'll reach out when we're onboarding creators in your city.</p>
+        <ul class="cr-apply-list">
+          <li><span class="tick">✓</span> Free — always, for creators</li>
+          <li><span class="tick">✓</span> You choose which invitations to accept</li>
+          <li><span class="tick">✓</span> No scripts, no lock-in</li>
+        </ul>
+      </div>
+      <div class="cr-apply-form">
+        <div id="okBlock" class="form-ok hidden">
+          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0 0 8px">Thanks — you're on the list</p>
+          <p style="margin:0;color:var(--muted)">We'll be in touch as soon as we're onboarding creators in your city.</p>
+        </div>
+        <form id="regForm" class="reg-form">
+          <input type="hidden" name="type" value="creator">
+          <input type="hidden" name="_subject" value="New creator application — Influence Hub">
+          <label>Your name
+            <input name="name" required placeholder="Layla">
+          </label>
+          <label>Instagram or TikTok
+            <input name="social" required placeholder="@yourhandle or profile link">
+          </label>
+          <label>City &amp; country
+            <input name="location" required placeholder="Dubai, United Arab Emirates">
+          </label>
+          <label>Audience size
+            <select name="audience" required>
+              <option value="" disabled selected>Select your following</option>
+              <option>Under 5,000</option>
+              <option>5,000–20,000</option>
+              <option>20,000–50,000</option>
+              <option>50,000–150,000</option>
+              <option>150,000+</option>
+            </select>
+          </label>
+          <label>Phone or Telegram
+            <input name="contact" required pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" title="Enter a Telegram @username (e.g. @layla) or a phone number with country code (e.g. +971 50 123 4567)." placeholder="@layla or +971…" inputmode="text" autocomplete="off">
+          </label>
+          <label class="consent">
+            <input type="checkbox" name="consent" required value="yes">
+            <span>I agree to the processing of my personal data in accordance with the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+          </label>
+          <button type="submit">Apply as a creator</button>
+          <p id="errMsg" class="form-err hidden">Something went wrong. Please write to hi@influencehub.ae.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site-footer">
