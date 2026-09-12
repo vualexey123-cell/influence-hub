@@ -46,9 +46,27 @@
   .card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.45); }
   .plan-card { transition:transform 220ms ease, box-shadow 220ms ease; }
   .plan-card:hover { transform:translateY(-4px); box-shadow:0 20px 36px -26px rgba(27,26,23,0.55); }
-  .bill-btn { transition:background 180ms ease, color 180ms ease; }
-  .bill-btn.active { background:#1B1A17 !important; color:#FFF9F2 !important; }
-  .bill-btn:not(.active):hover { color:#C13F22; }
+  .price-card { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); max-width:940px; margin:0 auto; border:1px solid #E2D8C6; border-radius:26px; overflow:hidden; box-shadow:0 34px 70px -44px rgba(27,26,23,0.55); }
+  .price-left { background:#1B1A17; color:#F5EFE4; padding:46px 44px; display:flex; flex-direction:column; }
+  .price-right { background:#FBF6EC; padding:46px 44px; }
+  .price-label { margin:0 0 16px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:#B5AC9F; }
+  .price-amount { font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:700; font-size:clamp(46px,5.2vw,62px); line-height:1; letter-spacing:-0.03em; margin:0 0 8px; white-space:nowrap; }
+  .price-amount .per { font-family:'Manrope',sans-serif; font-weight:500; font-size:18px; color:#B5AC9F; }
+  .price-billed { margin:0 0 26px; color:#B5AC9F; font-size:15px; min-height:1.1em; }
+  .bill-toggle { display:inline-flex; align-self:flex-start; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:5px; gap:4px; margin:0 0 30px; }
+  .bill-btn { border:0; background:transparent; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600; padding:9px 18px; border-radius:999px; color:#E4DCCE; display:inline-flex; align-items:center; gap:8px; transition:background 180ms ease, color 180ms ease; }
+  .bill-btn.active { background:#FFF9F2; color:#1B1A17; }
+  .bill-btn:not(.active):hover { color:#FFF9F2; }
+  .bill-save { background:#C13F22; color:#FFF9F2; font-size:11px; font-weight:700; padding:3px 7px; border-radius:999px; letter-spacing:0; }
+  .bill-btn.active .bill-save { background:#C13F22; color:#FFF9F2; }
+  .cta-full { display:block; text-align:center; background:#C13F22; color:#FFF9F2; padding:16px 24px; border-radius:999px; font-weight:600; font-size:16px; margin-top:auto; transition:background 200ms ease; }
+  .cta-full:hover { background:#E8724F; color:#FFF9F2; }
+  .price-trial { margin:18px 0 0; font-size:13.5px; line-height:1.55; color:#9A9186; }
+  .incl-title { margin:0 0 22px; font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:600; font-size:19px; letter-spacing:-0.01em; color:#1B1A17; }
+  .price-feats { list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+  .price-feats li { display:flex; gap:13px; align-items:flex-start; font-size:16px; line-height:1.45; color:#3D392F; }
+  .price-feats .ck { flex-shrink:0; width:22px; height:22px; border-radius:50%; background:rgba(193,63,34,0.12); color:#C13F22; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; margin-top:1px; }
+  @media (max-width:820px) { .price-card { grid-template-columns:1fr; } .price-left, .price-right { padding:38px 30px; } }
   .faq-btn:hover { color:#C13F22 !important; }
   .input:focus { border-color:#C13F22; outline:none; }
   .footlink { color:#B5AC9F; }
@@ -272,21 +290,23 @@
         <h2 data-i18n="priceTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(29px,3vw,42px);line-height:1.06;letter-spacing:-0.025em;margin:0"></h2>
         <p data-i18n="priceLead" style="color:#4A453C;font-size:19px;margin:0;max-width:520px"></p>
       </div>
-      <div style="display:flex;justify-content:center;margin:0 0 30px">
-        <div id="billToggle" style="display:inline-flex;background:#FBF6EC;border:1px solid #E2D8C6;border-radius:999px;padding:5px;gap:4px">
-          <button type="button" class="bill-btn active" data-bill="monthly" data-i18n="billMonthly" style="border:0;background:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:10px 22px;border-radius:999px;color:#1B1A17"></button>
-          <button type="button" class="bill-btn" data-bill="yearly" style="border:0;background:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:600;padding:10px 22px;border-radius:999px;color:#1B1A17;display:inline-flex;align-items:center;gap:8px"><span data-i18n="billYearly"></span><span data-i18n="billSave" style="background:#C13F22;color:#FFF9F2;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px"></span></button>
+      <div class="price-card">
+        <div class="price-left">
+          <p data-i18n="planLabel" class="price-label"></p>
+          <p id="planPrice" class="price-amount"></p>
+          <p id="planBilled" class="price-billed"></p>
+          <div class="bill-toggle" id="billToggle">
+            <button type="button" class="bill-btn active" data-bill="monthly" data-i18n="billMonthly"></button>
+            <button type="button" class="bill-btn" data-bill="yearly"><span data-i18n="billYearly"></span><span data-i18n="billSave" class="bill-save"></span></button>
+          </div>
+          <a href="#demo" class="cta-full" data-i18n="ctaPlan"></a>
+          <p data-i18n="priceNote" class="price-trial"></p>
+        </div>
+        <div class="price-right">
+          <p data-i18n="inclTitle" class="incl-title"></p>
+          <ul id="planFeatures" class="price-feats"></ul>
         </div>
       </div>
-      <div class="plan-card" style="background:#FBF6EC;border:1px solid #E2D8C6;border-radius:20px;padding:40px 40px 36px;max-width:540px;margin:0 auto">
-        <p data-i18n="planLabel" style="margin:0 0 14px;font-size:15px;color:#7A7369;text-transform:uppercase;letter-spacing:0.08em;text-align:center"></p>
-        <p id="planPrice" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(40px,5vw,56px);letter-spacing:-0.03em;line-height:1;margin:0 0 8px;white-space:nowrap;text-align:center"></p>
-        <p id="planBilled" style="margin:0 0 22px;color:#7A7369;font-size:15px;text-align:center"></p>
-        <p data-i18n="planBody" style="margin:0 0 22px;padding-top:22px;border-top:1px solid #E2D8C6;color:#5F594E;font-size:16px;text-align:center"></p>
-        <ul id="planFeatures" style="list-style:none;margin:0 0 30px;padding:0;display:grid;gap:14px"></ul>
-        <div style="text-align:center"><a href="#demo" class="btn-primary" data-i18n="ctaPlan" style="display:inline-block;padding:14px 40px;border-radius:999px;font-weight:600;font-size:16px"></a></div>
-      </div>
-      <p data-i18n="priceNote" style="margin:26px auto 0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-size:18px;color:#C13F22;max-width:640px;text-align:center"></p>
     </div>
   </section>
 
@@ -416,7 +436,7 @@ const COPY = {
     priceTitle: "What it costs",
     priceLead: "One fixed subscription. Creator fees, coordination and the monthly report are all included — nothing to top up along the way.",
     billMonthly: "Monthly", billYearly: "Yearly", billSave: "Save 17%",
-    planLabel: "Everything included", perMonth: " / month",
+    planLabel: "Everything included", perMonth: " / month", inclTitle: "What's included",
     priceMonthly: "$300", priceYearly: "$250",
     billedMonthly: "Billed monthly · cancel anytime", billedYearly: "$3,000 billed once a year · save $600",
     planBody: "Everything to bring local creators through your doors, month after month:",
@@ -501,7 +521,7 @@ const COPY = {
     priceTitle: "Сколько это стоит",
     priceLead: "Одна фиксированная подписка. Гонорары авторов, согласования и ежемесячный отчёт уже внутри — доплачивать по ходу не придётся.",
     billMonthly: "Помесячно", billYearly: "На год", billSave: "−17%",
-    planLabel: "Всё включено", perMonth: " / месяц",
+    planLabel: "Всё включено", perMonth: " / месяц", inclTitle: "Что входит",
     priceMonthly: "$300", priceYearly: "$250",
     billedMonthly: "Оплата помесячно · отмена в любой момент", billedYearly: "$3 000 разово за год · экономия $600",
     planBody: "Всё, чтобы приводить локальных авторов к вам каждый месяц:",
@@ -604,11 +624,10 @@ function renderPrice() {
   const price = billing === "yearly" ? t.priceYearly : t.priceMonthly;
   const billed = billing === "yearly" ? t.billedYearly : t.billedMonthly;
   document.getElementById("planPrice").innerHTML = esc(price) +
-    '<span style="font-family:\'Manrope\',sans-serif;font-weight:500;font-size:17px;color:#7A7369">' + esc(t.perMonth) + '</span>';
+    '<span class="per">' + esc(t.perMonth) + '</span>';
   document.getElementById("planBilled").textContent = billed;
   document.getElementById("planFeatures").innerHTML = (t.planFeatures || []).map(f =>
-    '<li style="display:flex;gap:12px;align-items:flex-start;font-size:16px;color:#3D392F">' +
-      '<span style="color:#C13F22;font-weight:800;flex-shrink:0;line-height:1.5">✓</span>' + esc(f) + '</li>').join("");
+    '<li><span class="ck">✓</span>' + esc(f) + '</li>').join("");
   document.querySelectorAll(".bill-btn").forEach(b =>
     b.classList.toggle("active", b.getAttribute("data-bill") === billing));
 }
