@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<script src="/consent.js" defer></script>
+<title>youpigo / local food bloggers bring you guests</title>
+<meta name="description" content="6 to 10 local food creators at your tables every month. We source the creators, agree the terms, spread visits across the month and send one clear report.">
+<meta property="og:title" content="youpigo">
+<meta property="og:description" content="Local food creators at your tables every month. Sourced, scheduled and reported for you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://inflnc.tech/experiment3/">
+<meta property="og:image" content="https://inflnc.tech/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#191F1F; --muted:#6C7270; --faint:#9AA09D;
+    --surface:#F4F4F1; --surface2:#FAFAF8; --line:#E7E7E2; --line2:#DEDED8;
+    --r:22px; --r-sm:14px; --r-btn:16px;
+    --shadow:0 1px 2px rgba(25,31,31,0.04), 0 8px 24px -14px rgba(25,31,31,0.14);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'DM Sans',system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;letter-spacing:-0.005em}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{margin:0;font-weight:600;letter-spacing:-0.025em;line-height:1.04;text-wrap:balance}
+  p{margin:0;text-wrap:pretty}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .muted{color:var(--muted)}
+  :focus-visible{outline:2.5px solid var(--ink);outline-offset:2px;border-radius:6px}
+  img{display:block;max-width:100%}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;border-radius:var(--r-btn);font-weight:600;font-size:16px;
+    padding:13px 22px;cursor:pointer;border:1.5px solid transparent;transition:transform .15s ease,background .18s ease,border-color .18s ease,color .18s ease}
+  .btn:active{transform:translateY(1px) scale(.994)}
+  .btn-dark{background:var(--ink);color:#fff}
+  .btn-dark:hover{background:#000}
+  .btn-ghost{background:var(--bg);color:var(--ink);border-color:var(--line2)}
+  .btn-ghost:hover{background:var(--surface);border-color:var(--ink)}
+  .btn-lg{padding:16px 26px;font-size:17px;border-radius:18px}
+  .arrow{font-weight:600}
+
+  /* header */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.82);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:26px;padding:15px 24px;max-width:1120px;margin:0 auto}
+  .logo{font-weight:700;font-size:23px;letter-spacing:-0.04em;margin-right:auto}
+  .nav-links{display:flex;gap:24px;font-size:15.5px;color:var(--muted)}
+  .nav-links a{transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+
+  /* hero */
+  .hero{padding:66px 0 24px}
+  .hero h1{font-size:clamp(40px,6.4vw,76px)}
+  .hero .sub{font-size:clamp(19px,2.2vw,24px);font-weight:500;color:var(--ink);margin:22px 0 0;max-width:30ch}
+  .hero .body{font-size:17px;color:var(--muted);margin:16px 0 0;max-width:56ch;line-height:1.6}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin:30px 0 0}
+
+  /* 3 feature cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:46px 0 0}
+  .card{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;
+    transition:transform .2s ease,box-shadow .2s ease}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .thumbs{display:flex;gap:8px;margin-bottom:18px}
+  .thumbs img,.thumbs .t{width:48px;height:48px;border-radius:12px;object-fit:cover;border:1px solid var(--line)}
+  .thumbs .t{display:flex;align-items:center;justify-content:center;background:var(--surface);font-size:20px}
+  .card h3{font-size:20px;margin-bottom:8px}
+  .card p{font-size:15px;color:var(--muted);line-height:1.55;margin-bottom:16px}
+  .card .lnk{margin-top:auto;font-size:15px;font-weight:600;color:var(--ink)}
+  .card .lnk:hover{color:var(--muted)}
+
+  /* ugc tiles */
+  .ugc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:16px 0 0}
+  .tile{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--surface);box-shadow:var(--shadow)}
+  .tile img{width:100%;height:100%;object-fit:cover}
+  .tile .badge{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(4px);border-radius:999px;padding:5px 11px 5px 6px;font-size:12.5px;font-weight:600}
+  .tile .badge img{width:22px;height:22px;border-radius:50%}
+  .tile .badge b{font-weight:600}
+  .tile .badge span{color:var(--muted);font-weight:500}
+
+  /* section */
+  section{padding:72px 0}
+  .sec-head{max-width:620px;margin:0 0 36px}
+  .sec-head h2{font-size:clamp(30px,4vw,46px)}
+  .sec-head p{font-size:18px;color:var(--muted);margin:14px 0 0;line-height:1.55}
+  .eyebrow{font-size:14px;font-weight:600;color:var(--faint);margin:0 0 14px}
+
+  /* how it works grid */
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .step{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+  .step .n{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;
+    background:var(--ink);color:#fff;font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;margin-bottom:18px}
+  .step h3{font-size:20px;margin-bottom:8px}
+  .step p{font-size:15.5px;color:var(--muted);line-height:1.55}
+  .step .tag{margin-top:14px;display:inline-block;font-size:13px;font-weight:600;color:var(--faint)}
+
+  /* report */
+  .report-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:40px;align-items:center}
+  .report-card{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:30px 32px;box-shadow:var(--shadow)}
+  .rc-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:4px}
+  .rc-month{font-weight:600;font-size:16px}
+  .rc-visits{font-size:14px;color:var(--muted)}
+  .rc-big{font-size:clamp(44px,6vw,64px);font-weight:600;letter-spacing:-0.04em;line-height:1;margin:14px 0 4px;font-variant-numeric:tabular-nums}
+  .rc-sub{font-size:14px;color:var(--muted);margin-bottom:22px}
+  .rc-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:baseline;padding:13px 0;border-top:1px solid var(--line)}
+  .rc-row .nm{font-weight:600;font-size:15px}
+  .rc-row .fm{font-size:13px;color:var(--faint);font-weight:500;margin-left:8px}
+  .rc-row .vl{font-weight:600;font-size:15px;text-align:right;font-variant-numeric:tabular-nums}
+  .rc-row .track{grid-column:1/-1;height:5px;border-radius:999px;background:var(--surface);overflow:hidden;margin-top:3px}
+  .rc-row .fill{height:100%;border-radius:999px;background:var(--ink)}
+  .rc-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+  .report-bullets{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:12px}
+  .report-bullets li{display:flex;gap:11px;font-size:16px;color:var(--ink)}
+  .report-bullets .ck{width:21px;height:21px;border-radius:50%;background:var(--ink);color:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px}
+
+  /* pricing */
+  .pricing{background:var(--surface);border-radius:28px;padding:40px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;align-items:center}
+  .price-amounts{display:flex;gap:14px;margin:0 0 18px}
+  .pa{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:18px 20px}
+  .pa.best{border-color:var(--ink);box-shadow:var(--shadow)}
+  .pa .lbl{font-size:13px;color:var(--muted);font-weight:500}
+  .pa .amt{font-size:34px;font-weight:600;letter-spacing:-0.03em;margin-top:4px;font-variant-numeric:tabular-nums}
+  .pa .amt small{font-size:15px;color:var(--muted);font-weight:500}
+  .pa .save{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .pa .note{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .price-incl{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .price-incl li{display:flex;gap:11px;font-size:15.5px}
+  .price-incl .ck{width:21px;height:21px;border-radius:50%;background:var(--ink);color:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px}
+  .price-cta{margin-top:22px}
+
+  /* faq 2-col */
+  .faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 44px}
+  .qa h3{font-size:18px;margin-bottom:8px}
+  .qa p{font-size:15.5px;color:var(--muted);line-height:1.6}
+
+  /* demo */
+  .demo{background:var(--ink);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:0.95fr 1.05fr;gap:44px;align-items:start}
+  .demo h2{font-size:clamp(28px,3.4vw,42px);color:#fff}
+  .demo .sub{font-size:16px;color:#B9BFBD;margin:16px 0 0;max-width:34ch;line-height:1.55}
+  .demo .alt{margin:26px 0 0;font-size:14.5px;color:#B9BFBD;line-height:1.9}
+  .demo .alt a{color:#fff;font-weight:600;border-bottom:1.5px solid rgba(255,255,255,0.4)}
+  .demo .alt a:hover{border-color:#fff}
+  .form{background:var(--bg);border-radius:var(--r);padding:26px;color:var(--ink)}
+  .form .fg{margin-bottom:14px}
+  .form label{display:block;font-size:13.5px;font-weight:500;color:var(--muted);margin-bottom:6px}
+  .form input,.form select{width:100%;background:var(--surface2);border:1.5px solid var(--line2);border-radius:12px;padding:12px 14px;font-family:inherit;font-size:15.5px;color:var(--ink)}
+  .form input:focus,.form select:focus{outline:none;border-color:var(--ink)}
+  .form .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .form .consent input{width:17px;height:17px;flex-shrink:0;margin-top:2px;accent-color:var(--ink)}
+  .form .consent a{color:var(--ink);text-decoration:underline}
+  .form button{width:100%;background:var(--ink);color:#fff;border:0;border-radius:14px;padding:15px;font-family:inherit;font-weight:600;font-size:16px;cursor:pointer;transition:transform .15s,background .18s}
+  .form button:hover{background:#000}
+  .form button:active{transform:translateY(1px)}
+  .ok{background:var(--surface);border-radius:var(--r);padding:26px;color:var(--ink)}
+  .ok h3{font-size:22px}
+  .ok p{color:var(--muted);margin-top:8px}
+  .err{color:#B3261E;font-size:14px;margin-top:10px}
+  .hidden{display:none}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:46px 0 36px}
+  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:28px;align-items:start}
+  .foot .logo{font-size:22px;margin:0}
+  .foot p{font-size:14px;color:var(--muted);margin:14px 0 0;max-width:34ch}
+  .foot h4{font-size:13px;font-weight:600;color:var(--faint);margin:0 0 12px}
+  .foot a{display:block;font-size:14.5px;color:var(--muted);padding:3px 0}
+  .foot a:hover{color:var(--ink)}
+  .footline{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:13.5px;color:var(--faint)}
+
+  /* float */
+  .float{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;flex-direction:column;gap:11px}
+  .float a{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);transition:transform .16s}
+  .float a:hover{transform:scale(1.07)}
+  .float .wa{background:#25D366}.float .tg{background:#229ED9}
+  .float svg{width:26px;height:26px;fill:#fff}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+  @media (max-width:880px){
+    .cards{grid-template-columns:1fr}
+    .ugc{grid-template-columns:1fr 1fr}
+    .report-grid{grid-template-columns:1fr;gap:28px}
+    .pricing{grid-template-columns:1fr;gap:28px;padding:30px}
+    .demo{grid-template-columns:1fr;gap:28px;padding:30px}
+    .faq-grid{grid-template-columns:1fr;gap:24px}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .nav-links{display:none}
+    .steps{grid-template-columns:1fr}
+    .ugc{grid-template-columns:1fr 1fr}
+    .price-amounts{flex-direction:column}
+    .foot{grid-template-columns:1fr}
+    section{padding:54px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">youpigo</a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#report">Report</a>
+      <a href="#price">Pricing</a>
+      <a href="/creators.html">For bloggers</a>
+    </div>
+    <a href="#demo" class="btn btn-dark">Book a demo</a>
+  </nav>
+</header>
+
+<main>
+<a id="top"></a>
+<section class="hero" style="padding-top:60px">
+  <div class="wrap">
+    <h1>Local food bloggers bring you guests.</h1>
+    <p class="sub">6 to 10 local food creators at your tables every month. Sourced, scheduled, and reported for you.</p>
+    <p class="body">You fill one short form. We find the creators, agree the terms, spread visits across the month, and send one clear report. The first month is a trial, so you can stop if the line-up isn't right.</p>
+    <div class="hero-ctas">
+      <a href="#demo" class="btn btn-dark btn-lg">Book a demo</a>
+      <a href="#how" class="btn btn-ghost btn-lg">See how it works <span class="arrow">&rarr;</span></a>
+    </div>
+
+    <div class="cards">
+      <article class="card rv">
+        <div class="thumbs">
+          <img src="https://picsum.photos/seed/youpi-cr1/96/96" alt="Local food creator">
+          <img src="https://picsum.photos/seed/youpi-cr2/96/96" alt="Local food creator">
+          <img src="https://picsum.photos/seed/youpi-cr3/96/96" alt="Local food creator">
+          <img src="https://picsum.photos/seed/youpi-cr4/96/96" alt="Local food creator">
+        </div>
+        <h3>Creators</h3>
+        <p>6 to 10 local food creators every month, each with a real, nearby audience. You approve the list before anyone visits.</p>
+        <a href="#how" class="lnk">See how casting works &rarr;</a>
+      </article>
+      <article class="card rv">
+        <div class="thumbs">
+          <span class="t">▶</span><span class="t">◳</span><span class="t">✦</span>
+          <img src="https://picsum.photos/seed/youpi-food1/96/96" alt="Food content">
+        </div>
+        <h3>Coverage</h3>
+        <p>Reels, posts and stories across Instagram and TikTok. 93,450 people reached in a sample month, across 9 visits.</p>
+        <a href="#report" class="lnk">See a sample report &rarr;</a>
+      </article>
+      <article class="card rv">
+        <div class="thumbs">
+          <span class="t">🗓</span><span class="t">📄</span><span class="t">↺</span>
+          <img src="https://picsum.photos/seed/youpi-venue1/96/96" alt="Restaurant">
+        </div>
+        <h3>Hands off</h3>
+        <p>You spend about 5 minutes a month. No chats with bloggers, no scheduling, and no chasing no-shows.</p>
+        <a href="#how" class="lnk">See the 4 steps &rarr;</a>
+      </article>
+    </div>
+
+    <div class="ugc">
+      <div class="tile rv"><img src="https://picsum.photos/seed/youpi-u1/600/800" alt="Creator content at a restaurant"><div class="badge"><img src="https://picsum.photos/seed/youpi-a1/60/60" alt=""><b>@dubai.bites</b><span>1.2M</span></div></div>
+      <div class="tile rv"><img src="https://picsum.photos/seed/youpi-u2/600/800" alt="Creator content at a cafe"><div class="badge"><img src="https://picsum.photos/seed/youpi-a2/60/60" alt=""><b>@brunch.lea</b><span>228K</span></div></div>
+      <div class="tile rv"><img src="https://picsum.photos/seed/youpi-u3/600/800" alt="Creator filming a dish"><div class="badge"><img src="https://picsum.photos/seed/youpi-a3/60/60" alt=""><b>@eats.omar</b><span>94K</span></div></div>
+      <div class="tile rv"><img src="https://picsum.photos/seed/youpi-u4/600/800" alt="Creator tasting food"><div class="badge"><img src="https://picsum.photos/seed/youpi-a4/60/60" alt=""><b>@layla.tastes</b><span>728K</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Four steps, and only the first one needs you.</h2>
+      <p>After the form, the guests and the report just show up. No chats, no scheduling on your side.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">1</div><h3>You fill one short form, once</h3><p>Your place, your food, the days bloggers can come, and your terms. About five minutes.</p><span class="tag">~5 min</span></div>
+      <div class="step rv"><div class="n">2</div><h3>We pick bloggers and show you the list</h3><p>Local people with a real audience. Remove anyone you don't want before they visit.</p><span class="tag">You approve</span></div>
+      <div class="step rv"><div class="n">3</div><h3>We spread visits across the month</h3><p>Your team gets the list early, so you never get five shoots on one day.</p><span class="tag">Hands off</span></div>
+      <div class="step rv"><div class="n">4</div><h3>We send one clear report</h3><p>What was posted and how many people saw it. One file, no chat screenshots.</p><span class="tag">End of month</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="report" style="background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="report-grid">
+      <div>
+        <p class="eyebrow">The report</p>
+        <h2 style="font-size:clamp(28px,3.6vw,42px)">A clear report every month.</h2>
+        <p class="muted" style="margin-top:14px;font-size:17px;line-height:1.55">One file at the end of the month: who came, what they posted, and how many people saw it.</p>
+        <ul class="report-bullets">
+          <li><span class="ck">✓</span> Links to every post, real ones, not screenshots</li>
+          <li><span class="ck">✓</span> Views and saves for each blogger</li>
+          <li><span class="ck">✓</span> What worked and what didn't, in plain words</li>
+          <li><span class="ck">✓</span> A plan for next month</li>
+        </ul>
+      </div>
+      <div class="report-card">
+        <div class="rc-top"><span class="rc-month">August · Marlow Coffee</span><span class="rc-visits">9 visits</span></div>
+        <div class="rc-big">93,450</div>
+        <div class="rc-sub">people reached</div>
+        <div id="rcList"></div>
+        <div class="rc-foot">Plus links to every post, saves per blogger, and a plan for next month.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Pricing</p>
+      <h2>One fixed subscription. Everything included.</h2>
+      <p>Creator fees, coordination and the monthly report are all in. Nothing to top up later.</p>
+    </div>
+    <div class="pricing">
+      <div>
+        <div class="price-amounts">
+          <div class="pa"><div class="lbl">Monthly</div><div class="amt">$300<small>/mo</small></div><div class="note">Billed monthly, cancel anytime</div></div>
+          <div class="pa best"><div class="lbl">Yearly</div><div class="amt">$250<small>/mo</small></div><div class="save">Save 17%</div><div class="note">$3,000 billed once a year</div></div>
+        </div>
+        <p class="muted" style="font-size:14.5px">The first month is a trial. If the line-up isn't right, we stop after it. No renewal conversations.</p>
+      </div>
+      <div>
+        <ul class="price-incl">
+          <li><span class="ck">✓</span> 6 to 10 local food bloggers every month</li>
+          <li><span class="ck">✓</span> We find, vet and schedule everyone for you</li>
+          <li><span class="ck">✓</span> You approve every blogger before they visit</li>
+          <li><span class="ck">✓</span> A clear report after every month</li>
+          <li><span class="ck">✓</span> No-shows replaced at no extra cost</li>
+        </ul>
+        <div class="price-cta"><a href="#demo" class="btn btn-dark btn-lg">Book a demo</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--surface2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions, answered.</h2></div>
+    <div class="faq-grid">
+      <div class="qa"><h3>Do I have to talk to the bloggers?</h3><p>No. We handle sourcing, terms and scheduling. You approve the list and get the report. Zero chats on your side.</p></div>
+      <div class="qa"><h3>What if a blogger doesn't show up?</h3><p>We bring in another one the same month, at no extra cost. A no-show is our problem, not yours.</p></div>
+      <div class="qa"><h3>How fast do you reply?</h3><p>Within one day, usually within a few hours. We write instead of calling ten times.</p></div>
+      <div class="qa"><h3>Is there a contract or lock-in?</h3><p>The first month is a trial. If you don't like the line-up, we stop after it. No renewal conversations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="demo">
+      <div>
+        <h2>Book a demo.</h2>
+        <p class="sub">We show real profiles from your city, last month's schedule for a similar venue, and a full report. You decide nothing on the call.</p>
+        <p class="alt">
+          Are you a blogger, not a venue? <a href="/creators.html">Apply here</a><br>
+          Prefer email? <a href="mailto:hi@influencehub.ae">hi@influencehub.ae</a>
+        </p>
+      </div>
+      <div>
+        <div id="okBlock" class="ok hidden">
+          <h3>Received.</h3>
+          <p>We reply within one day, usually within a few hours.</p>
+        </div>
+        <form id="demoForm" class="form">
+          <input type="hidden" name="type" value="venue">
+          <input type="hidden" name="_subject" value="New demo request / youpigo (experiment3)">
+          <div class="fg"><label>Venue name</label><input name="place" required placeholder="Marlow Coffee"></div>
+          <div class="fg"><label>Country</label>
+            <select name="country" required>
+              <option value="" disabled selected>Select country</option>
+              <option>United Arab Emirates</option><option>Saudi Arabia</option><option>Qatar</option>
+              <option>Bahrain</option><option>Kuwait</option><option>Oman</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fg"><label>Your name</label><input name="name" required placeholder="Layla"></div>
+          <div class="fg"><label>Phone or Telegram</label>
+            <input name="contact" required pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" title="Telegram @username or a phone number with country code" placeholder="@layla or +971..." autocomplete="off">
+          </div>
+          <label class="consent"><input type="checkbox" name="consent" required value="yes"><span>I agree to the processing of my personal data per the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+          <button type="submit">Send request</button>
+          <p id="errMsg" class="err hidden">Something went wrong. Please write to hi@influencehub.ae.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="logo" style="font-weight:700;letter-spacing:-0.04em">youpigo</p>
+        <p>Local food bloggers bring you guests. Sourcing, scheduling and reporting handled for you.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="#how">How it works</a>
+        <a href="#report">Report</a>
+        <a href="#price">Pricing</a>
+        <a href="/creators.html">For bloggers</a>
+      </div>
+      <div>
+        <h4>Contact &amp; legal</h4>
+        <a href="mailto:hi@influencehub.ae">hi@influencehub.ae</a>
+        <a href="https://t.me/vu_alexey" target="_blank" rel="noopener">Telegram</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/cookies.html">Cookies</a>
+      </div>
+    </div>
+    <div class="footline"><span>2026 © youpigo</span><span>inflnc.tech</span></div>
+  </div>
+</footer>
+
+<div class="float">
+  <a class="wa" href="https://wa.me/79053351287?text=Hi!%20I'd%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a class="tg" href="https://t.me/vu_alexey" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</div>
+
+<script>
+(function () {
+  // report ranked bars
+  var rows = [
+    { who: "@dubai.bites", fmt: "Reels", reach: 31400 },
+    { who: "@brunch.lea", fmt: "Post", reach: 12780 },
+    { who: "@eats.omar", fmt: "Stories x4", reach: 8210 },
+    { who: "6 more bloggers", fmt: "mixed", reach: 41060 }
+  ];
+  var max = Math.max.apply(null, rows.map(function (r) { return r.reach; }));
+  document.getElementById("rcList").innerHTML = rows.map(function (r) {
+    var w = Math.max(5, Math.round(r.reach / max * 100));
+    return '<div class="rc-row"><div><span class="nm">' + r.who + '</span><span class="fm">' + r.fmt + '</span></div>' +
+      '<div class="vl">' + r.reach.toLocaleString("en-US") + '</div>' +
+      '<div class="track"><div class="fill" style="width:' + w + '%"></div></div></div>';
+  }).join("");
+
+  // form
+  var FORMSPREE = "https://formspree.io/f/xjyblgzv";
+  var form = document.getElementById("demoForm");
+  var ok = document.getElementById("okBlock");
+  var err = document.getElementById("errMsg");
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.classList.add("hidden");
+    try {
+      var res = await fetch(FORMSPREE, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+      if (res.ok) { form.classList.add("hidden"); ok.classList.remove("hidden"); }
+      else err.classList.remove("hidden");
+    } catch (_) { err.classList.remove("hidden"); }
+  });
+
+  // reveal
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.14 });
+    document.querySelectorAll(".rv").forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll(".rv").forEach(function (el) { el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
