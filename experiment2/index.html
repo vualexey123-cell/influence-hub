@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<script src="/consent.js" defer></script>
+<title>youpigo / local food bloggers bring you guests</title>
+<meta name="description" content="We source local food bloggers, agree the terms, spread visits across the month and send one clear report. You provide a table and a few words about the kitchen.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE7DE; --paper2:#E1DDCF; --ink:#0E0E0C; --red:#E5281C;
+    --mut:#6B675C;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Space Mono','Courier New',monospace; font-size:15px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* global grain */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:0.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;margin:0;letter-spacing:0.01em}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'Space Mono',monospace}
+  .up{text-transform:uppercase;letter-spacing:0.08em}
+  .red{color:var(--red)}
+  .hz{height:9px;background:repeating-linear-gradient(45deg,var(--ink) 0 13px,var(--red) 13px 26px)}
+  .bar{display:inline-block;width:92px;height:26px;vertical-align:middle;
+    background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 9px);}
+
+  /* header */
+  header{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:2px solid var(--ink)}
+  .hrow{display:flex;align-items:center;gap:22px;padding:13px 24px;max-width:1280px;margin:0 auto}
+  .brand{font-family:'Anton',sans-serif;font-size:26px;letter-spacing:0.02em;text-transform:uppercase;line-height:1;margin-right:auto}
+  .brand sup{font-family:'Space Mono',monospace;font-size:11px;vertical-align:super;margin-left:1px}
+  .brand .red{color:var(--red)}
+  nav.top{display:flex;gap:20px;font-size:12px}
+  nav.top a{letter-spacing:0.08em;text-transform:uppercase;border-bottom:2px solid transparent;padding-bottom:2px}
+  nav.top a:hover{border-bottom-color:var(--red);color:var(--red)}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);border:2px solid var(--ink);
+    font-family:'Space Mono',monospace;font-weight:700;font-size:12px;letter-spacing:0.09em;text-transform:uppercase;
+    padding:10px 16px;cursor:pointer;transition:background .12s,color .12s}
+  .cta:hover{background:var(--red);border-color:var(--red);color:#fff}
+  .cta.inv{background:var(--paper);color:var(--ink)}
+  .cta.inv:hover{background:var(--ink);color:var(--paper)}
+
+  /* section frame */
+  .sec{border-bottom:2px solid var(--ink)}
+  .sechd{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;
+    padding:16px 24px;border-bottom:2px solid var(--ink);max-width:1280px;margin:0 auto}
+  .sechd .tag{font-size:12px;letter-spacing:0.12em;text-transform:uppercase}
+  .sechd .tag b{color:var(--red);font-weight:400}
+  .sechd .rev{font-size:11px;color:var(--mut);letter-spacing:0.1em;text-transform:uppercase}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.15fr 0.85fr;max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .hero-l{padding:40px 36px 30px;display:flex;flex-direction:column;border-right:2px solid var(--ink)}
+  .eyebrow{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin:0 0 20px}
+  .hero-l h1{font-size:clamp(46px,7.4vw,104px);line-height:0.86;letter-spacing:-0.01em}
+  .hero-sub{margin:24px 0 30px;font-size:14px;line-height:1.65;text-transform:uppercase;letter-spacing:0.03em;color:#2B2922;max-width:40ch}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
+  .hero-r{position:relative;background:var(--ink);display:flex;align-items:center;justify-content:center;min-height:360px;overflow:hidden}
+  .hero-r .cap{position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A857A}
+  .hero-r .rev{position:absolute;right:16px;top:14px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#8A857A}
+  .hero-r svg{width:78%;max-width:360px;height:auto;display:block}
+
+  /* marquee */
+  .marq{background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--ink)}
+  .marq .track{display:inline-block;padding:11px 0;font-family:'Anton',sans-serif;font-size:20px;letter-spacing:0.04em;text-transform:uppercase;animation:scroll 26s linear infinite}
+  .marq .track span{padding:0 22px}
+  .marq .track span.red{color:var(--red)}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* stat row */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .stat{background:var(--paper);padding:26px 22px}
+  .stat .n{font-family:'Anton',sans-serif;font-size:clamp(34px,4.2vw,58px);line-height:0.9;letter-spacing:-0.01em}
+  .stat .n .red{color:var(--red)}
+  .stat .l{margin-top:10px;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mut)}
+
+  /* how grid */
+  .how{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .cell{background:var(--paper);padding:26px 22px 30px;display:flex;flex-direction:column;min-height:300px}
+  .cell .num{font-family:'Anton',sans-serif;font-size:72px;line-height:0.8;color:transparent;-webkit-text-stroke:2px var(--ink);letter-spacing:-0.02em}
+  .cell:first-child .num{-webkit-text-stroke-color:var(--red)}
+  .cell .k{margin:16px 0 10px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--red)}
+  .cell h3{font-size:20px;line-height:1.02}
+  .cell p{margin:12px 0 0;font-size:13px;line-height:1.6;text-transform:uppercase;letter-spacing:0.02em;color:#2B2922}
+  .cell .meta{margin-top:auto;padding-top:16px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mut)}
+
+  /* report / telemetry (dark compartment) */
+  .report{background:var(--ink);color:var(--paper);max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .report-in{display:grid;grid-template-columns:0.9fr 1.1fr;gap:40px;padding:40px 36px}
+  .report h2{font-size:clamp(30px,3.6vw,50px);line-height:0.92}
+  .report .lead{margin:18px 0 0;font-size:13px;line-height:1.6;text-transform:uppercase;letter-spacing:0.03em;color:#B7B2A6;max-width:34ch}
+  .report .big{font-family:'Anton',sans-serif;font-size:clamp(56px,8vw,104px);line-height:0.82;color:var(--red);letter-spacing:-0.01em;margin-top:26px}
+  .report .bigsub{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#8A857A;margin-top:8px}
+  .rtab{border:2px solid var(--paper);align-self:start}
+  .rtab .rh,.rtab .rr{display:grid;grid-template-columns:1.5fr 0.9fr 0.9fr;gap:12px;padding:11px 16px;font-size:12px;letter-spacing:0.06em;text-transform:uppercase}
+  .rtab .rh{border-bottom:2px solid var(--paper);color:#8A857A}
+  .rtab .rr{border-bottom:1px solid #2E2C26}
+  .rtab .rr:last-child{border-bottom:0}
+  .rtab .rr .v{text-align:right;color:var(--red);font-weight:700}
+  .rtab .rr .f{color:#B7B2A6}
+  .rtab .foot{padding:13px 16px;border-top:2px solid var(--paper);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:#8A857A;line-height:1.6}
+
+  /* price */
+  .price{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .pcell{background:var(--paper);padding:30px 28px}
+  .pcell.alt{background:var(--paper2)}
+  .pcell .pk{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mut)}
+  .pcell .amt{font-family:'Anton',sans-serif;font-size:clamp(44px,5.6vw,76px);line-height:0.85;margin-top:10px}
+  .pcell .amt small{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.04em;color:var(--mut)}
+  .pcell .save{display:inline-block;margin-top:12px;background:var(--red);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 9px}
+  .pcell .note{margin-top:12px;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--mut)}
+  .incl{max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink);padding:26px 28px 30px;display:grid;grid-template-columns:1fr 1fr;gap:10px 36px}
+  .incl .it{display:flex;gap:12px;font-size:13px;text-transform:uppercase;letter-spacing:0.03em}
+  .incl .it b{color:var(--red);font-weight:700}
+  .incl .cta-row{grid-column:1/-1;margin-top:12px}
+
+  /* faq */
+  .faq{max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .faq details{border-bottom:2px solid var(--ink)}
+  .faq details:last-child{border-bottom:0}
+  .faq summary{list-style:none;cursor:pointer;padding:20px 28px;display:flex;gap:18px;align-items:baseline;
+    font-family:'Anton',sans-serif;font-size:clamp(18px,2vw,24px);text-transform:uppercase;letter-spacing:0.01em}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .mk{color:var(--red);font-family:'Space Mono',monospace;font-size:20px;flex-shrink:0}
+  .faq details[open] summary .mk::after{content:"[ - ]"}
+  .faq summary .mk::after{content:"[ + ]"}
+  .faq p{margin:0;padding:0 28px 24px 62px;font-size:13px;line-height:1.7;text-transform:uppercase;letter-spacing:0.02em;color:#2B2922;max-width:80ch}
+
+  /* demo / form */
+  .demo{display:grid;grid-template-columns:0.95fr 1.05fr;max-width:1280px;margin:0 auto;border-left:2px solid var(--ink);border-right:2px solid var(--ink)}
+  .demo-l{padding:40px 36px;border-right:2px solid var(--ink);display:flex;flex-direction:column}
+  .demo-l h2{font-size:clamp(32px,4vw,58px);line-height:0.88}
+  .demo-l .sub{margin:20px 0 0;font-size:13px;line-height:1.6;text-transform:uppercase;letter-spacing:0.03em;color:#2B2922;max-width:34ch}
+  .demo-l .alt{margin-top:auto;padding-top:28px;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;line-height:1.9}
+  .demo-l .alt a{border-bottom:2px solid var(--red);color:var(--red)}
+  .demo-r{padding:40px 36px}
+  form .fg{margin-bottom:16px}
+  form label{display:block;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+  form input,form select{width:100%;background:var(--paper);border:2px solid var(--ink);padding:12px 13px;
+    font-family:'Space Mono',monospace;font-size:14px;color:var(--ink);text-transform:uppercase}
+  form input:focus,form select:focus{outline:none;border-color:var(--red)}
+  form .consent{display:flex;gap:10px;align-items:flex-start;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:var(--mut);margin:4px 0 16px}
+  form .consent input{width:16px;height:16px;flex-shrink:0;margin-top:1px;accent-color:var(--red)}
+  form .consent a{border-bottom:1px solid var(--red);color:var(--red)}
+  form button{width:100%;background:var(--red);color:#fff;border:2px solid var(--red);
+    font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;padding:15px;cursor:pointer}
+  form button:hover{background:var(--ink);border-color:var(--ink)}
+  .ok{border:2px solid var(--ink);background:var(--paper2);padding:26px}
+  .ok h3{font-size:24px}
+  .ok p{margin:10px 0 0;font-size:13px;text-transform:uppercase;letter-spacing:0.03em}
+  .err{color:var(--red);font-size:12px;text-transform:uppercase;letter-spacing:0.05em;margin:10px 0 0}
+  .hidden{display:none}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--paper)}
+  .foot{max-width:1280px;margin:0 auto;padding:36px 24px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+  .foot .brand{color:var(--paper)}
+  .foot .brand .red{color:var(--red)}
+  .foot h4{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#8A857A;margin:0 0 12px;font-family:'Space Mono',monospace;font-weight:700}
+  .foot a{display:block;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:#CFCABE;padding:3px 0}
+  .foot a:hover{color:var(--red)}
+  .foot .bar{filter:invert(1)}
+  .footline{border-top:1px solid #2E2C26;padding:16px 24px;max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#8A857A}
+
+  /* float contacts */
+  .float{position:fixed;right:16px;bottom:16px;z-index:150;display:flex;flex-direction:column;gap:10px}
+  .float a{width:48px;height:48px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;background:var(--paper)}
+  .float a:hover{background:var(--red);border-color:var(--red)}
+  .float svg{width:24px;height:24px;fill:var(--ink)}
+  .float a:hover svg{fill:#fff}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-l{border-right:0;border-bottom:2px solid var(--ink)}
+    .report-in{grid-template-columns:1fr;gap:28px}
+    .demo{grid-template-columns:1fr}
+    .demo-l{border-right:0;border-bottom:2px solid var(--ink)}
+    .stats{grid-template-columns:1fr 1fr}
+    .how{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    nav.top{display:none}
+    .stats,.how,.price{grid-template-columns:1fr}
+    .incl{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr}
+    .cell{min-height:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <a href="#top" class="brand">YOUPI<span class="red">GO</span><sup>®</sup></a>
+    <nav class="top">
+      <a href="#how">How it works</a>
+      <a href="#report">Report</a>
+      <a href="#price">Price</a>
+      <a href="#faq">FAQ</a>
+      <a href="/creators.html">For bloggers</a>
+    </nav>
+    <a href="#demo" class="cta">[ Book a demo ]</a>
+  </div>
+</header>
+<div class="hz"></div>
+
+<a id="top"></a>
+<section class="sec">
+  <div class="hero">
+    <div class="hero-l">
+      <p class="eyebrow">[ Influence marketing / done for you ]</p>
+      <h1>Local food bloggers bring you <span class="red">guests.</span></h1>
+      <p class="hero-sub">We source the creators, agree the terms, spread visits across the month and send one clear report. You provide a table and a few words about the kitchen.</p>
+      <div class="hero-ctas">
+        <a href="#demo" class="cta">&gt;&gt;&gt; Book a demo</a>
+        <a href="#how" class="cta inv">[ How it works ]</a>
+      </div>
+    </div>
+    <div class="hero-r">
+      <span class="rev">Rev 2.6 / UAE</span>
+      <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" aria-label="Coffee cup">
+        <defs>
+          <pattern id="dots" width="11" height="11" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="2.1" fill="#EAE7DE"/>
+          </pattern>
+        </defs>
+        <!-- steam -->
+        <g stroke="#E5281C" stroke-width="7" stroke-linecap="round" fill="none">
+          <path d="M150 86 q-14 -22 0 -44"/>
+          <path d="M200 80 q-14 -24 0 -48"/>
+          <path d="M250 86 q-14 -22 0 -44"/>
+        </g>
+        <!-- saucer -->
+        <ellipse cx="200" cy="330" rx="150" ry="26" fill="#E5281C"/>
+        <!-- handle -->
+        <path d="M300 180 q58 6 52 58 q-6 46 -58 44" fill="none" stroke="#EAE7DE" stroke-width="14"/>
+        <!-- mug body -->
+        <path d="M118 150 L300 150 L286 286 Q200 322 132 286 Z" fill="url(#dots)" stroke="#EAE7DE" stroke-width="3"/>
+        <!-- rim -->
+        <ellipse cx="209" cy="150" rx="91" ry="20" fill="#0E0E0C" stroke="#EAE7DE" stroke-width="3"/>
+      </svg>
+      <span class="cap">Fig. 01 / Restaurants &amp; cafes</span>
+    </div>
+  </div>
+</section>
+
+<div class="marq">
+  <div class="track">
+    <span>New bloggers every month</span><span class="red">///</span><span>New bloggers every month</span><span class="red">///</span><span>New bloggers every month</span><span class="red">///</span><span>New bloggers every month</span><span class="red">///</span>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="stats">
+    <div class="stat"><div class="n">6-10</div><div class="l">Creators / month</div></div>
+    <div class="stat"><div class="n"><span class="red">93,450</span></div><div class="l">People reached / sample month</div></div>
+    <div class="stat"><div class="n">5 min</div><div class="l">Your time / month</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">Chats with bloggers</div></div>
+  </div>
+</section>
+
+<section class="sec" id="how">
+  <div class="sechd">
+    <span class="tag">[ <b>How it works</b> ]</span>
+    <span class="rev">Four steps / only the first needs you</span>
+  </div>
+  <div class="how">
+    <div class="cell">
+      <div class="num">01</div>
+      <div class="k">Intake</div>
+      <h3>You fill one short form, once</h3>
+      <p>Your place, your food, the days bloggers can come, and your terms.</p>
+      <div class="meta">&gt; 5 min</div>
+    </div>
+    <div class="cell">
+      <div class="num">02</div>
+      <div class="k">Casting</div>
+      <h3>We pick bloggers and show you the list</h3>
+      <p>Local people with a real audience. Remove anyone you do not want.</p>
+      <div class="meta">&gt; You approve</div>
+    </div>
+    <div class="cell">
+      <div class="num">03</div>
+      <div class="k">Schedule</div>
+      <h3>We spread visits across the month</h3>
+      <p>Your team gets the list early. Never five shoots on one day.</p>
+      <div class="meta">&gt; Hands off</div>
+    </div>
+    <div class="cell">
+      <div class="num">04</div>
+      <div class="k">Report</div>
+      <h3>We send one clear report</h3>
+      <p>What was posted and how many people saw it. One file, no screenshots.</p>
+      <div class="meta">&gt; End of month</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="report">
+  <div class="sechd">
+    <span class="tag">[ <b>Monthly report</b> / output ]</span>
+    <span class="rev">Sample / August</span>
+  </div>
+  <div class="report">
+    <div class="report-in">
+      <div>
+        <h2>You get a clear report every month</h2>
+        <p class="lead">One file at the end of the month: who came, what they posted, how many people saw it.</p>
+        <div class="big">93,450</div>
+        <div class="bigsub">People reached / 9 visits / Marlow Coffee</div>
+      </div>
+      <div class="rtab">
+        <div class="rh"><span>Blogger</span><span class="f">Format</span><span class="v">Reach</span></div>
+        <div class="rr"><span>@dubai.bites</span><span class="f">Reels</span><span class="v">31,400</span></div>
+        <div class="rr"><span>@brunch.lea</span><span class="f">Post</span><span class="v">12,780</span></div>
+        <div class="rr"><span>@eats.omar</span><span class="f">Stories x4</span><span class="v">8,210</span></div>
+        <div class="rr"><span>6 more bloggers</span><span class="f">mixed</span><span class="v">41,060</span></div>
+        <div class="foot">&gt;&gt; Plus links to every post, saves per blogger, and a plan for next month.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="price">
+  <div class="sechd">
+    <span class="tag">[ <b>Price</b> / one subscription ]</span>
+    <span class="rev">Creators + planning + report included</span>
+  </div>
+  <div class="price">
+    <div class="pcell">
+      <div class="pk">Monthly</div>
+      <div class="amt">$300<small>/mo</small></div>
+      <div class="note">Billed monthly / cancel anytime</div>
+    </div>
+    <div class="pcell alt">
+      <div class="pk">Yearly</div>
+      <div class="amt">$250<small>/mo</small></div>
+      <div class="save">Save 17%</div>
+      <div class="note">$3,000 once a year</div>
+    </div>
+  </div>
+  <div class="incl">
+    <div class="it"><b>[x]</b> 6-10 local food bloggers every month</div>
+    <div class="it"><b>[x]</b> We find, vet and schedule everyone</div>
+    <div class="it"><b>[x]</b> You approve every blogger before they visit</div>
+    <div class="it"><b>[x]</b> A clear report after every month</div>
+    <div class="it"><b>[x]</b> No-shows replaced at no extra cost</div>
+    <div class="it"><b>[x]</b> First month is a trial. No lock-in.</div>
+    <div class="cta-row"><a href="#demo" class="cta">&gt;&gt;&gt; Book a demo</a></div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="sechd">
+    <span class="tag">[ <b>FAQ</b> ]</span>
+    <span class="rev">Common questions</span>
+  </div>
+  <div class="faq">
+    <details open>
+      <summary><span class="mk"></span><span>Do I have to talk to the bloggers?</span></summary>
+      <p>No. We handle sourcing, terms and scheduling. You approve the list and get the report. Zero chats on your side.</p>
+    </details>
+    <details>
+      <summary><span class="mk"></span><span>What if a blogger does not show up?</span></summary>
+      <p>We bring in another one the same month, at no extra cost. A no-show is our problem, not yours.</p>
+    </details>
+    <details>
+      <summary><span class="mk"></span><span>How fast do you reply?</span></summary>
+      <p>Within one day. We write instead of calling ten times.</p>
+    </details>
+    <details>
+      <summary><span class="mk"></span><span>Is there a contract or lock-in?</span></summary>
+      <p>The first month is a trial. If you do not like the line-up, we stop after it. No renewal conversations.</p>
+    </details>
+  </div>
+</section>
+
+<section class="sec" id="demo">
+  <div class="demo">
+    <div class="demo-l">
+      <h2>Book a demo</h2>
+      <p class="sub">We show real profiles from your city, last month's schedule for a similar venue, and a full report. You decide nothing on the call.</p>
+      <div class="alt">
+        &gt;&gt; Are you a blogger, not a venue?<br>
+        <a href="/creators.html">Apply on the creators page</a><br><br>
+        &gt;&gt; Prefer email?<br>
+        <a href="mailto:hi@influencehub.ae">hi@influencehub.ae</a>
+      </div>
+    </div>
+    <div class="demo-r">
+      <div id="okBlock" class="ok hidden">
+        <h3>Received.</h3>
+        <p>We reply within one day, usually in a few hours.</p>
+      </div>
+      <form id="demoForm">
+        <input type="hidden" name="type" value="venue">
+        <input type="hidden" name="_subject" value="New demo request / youpigo (experiment2)">
+        <div class="fg"><label>Venue name</label><input name="place" required placeholder="Marlow Coffee"></div>
+        <div class="fg"><label>Country</label>
+          <select name="country" required>
+            <option value="" disabled selected>Select country</option>
+            <option>United Arab Emirates</option><option>Saudi Arabia</option><option>Qatar</option>
+            <option>Bahrain</option><option>Kuwait</option><option>Oman</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Your name</label><input name="name" required placeholder="Layla"></div>
+        <div class="fg"><label>Phone or Telegram</label>
+          <input name="contact" required pattern="(@[A-Za-z0-9_]{5,32})|(\+?[0-9][0-9\s\-()]{6,18})" title="Telegram @username or a phone number with country code" placeholder="@layla or +971..." autocomplete="off">
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required value="yes"><span>I agree to the processing of my personal data per the <a href="/privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+        <button type="submit">&gt;&gt;&gt; Send request</button>
+        <p id="errMsg" class="err hidden">Something went wrong. Write to hi@influencehub.ae.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand" style="font-family:'Anton',sans-serif;font-size:30px;text-transform:uppercase">YOUPI<span class="red">GO</span><sup style="font-family:'Space Mono',monospace;font-size:12px">®</sup></div>
+      <p style="font-size:12px;text-transform:uppercase;letter-spacing:0.04em;color:#8A857A;margin:14px 0 0;max-width:34ch">Local food bloggers bring you guests. Sourcing, scheduling and reporting handled for you.</p>
+      <div style="margin-top:18px"><span class="bar"></span></div>
+    </div>
+    <div>
+      <h4>Index</h4>
+      <a href="#how">How it works</a>
+      <a href="#report">Report</a>
+      <a href="#price">Price</a>
+      <a href="#faq">FAQ</a>
+      <a href="/creators.html">For bloggers</a>
+    </div>
+    <div>
+      <h4>Contact / legal</h4>
+      <a href="mailto:hi@influencehub.ae">hi@influencehub.ae</a>
+      <a href="https://t.me/vu_alexey" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://wa.me/79053351287" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/cookies.html">Cookies</a>
+    </div>
+  </div>
+  <div class="footline">
+    <span>YOUPIGO® / 2026 / All rights reserved</span>
+    <span>INFLNC.TECH / REV 2.6 / UNIT D-01</span>
+  </div>
+</footer>
+
+<div class="float">
+  <a href="https://wa.me/79053351287?text=Hi!%20I'd%20like%20to%20book%20a%20demo" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a href="https://t.me/vu_alexey" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+</div>
+
+<script>
+(function () {
+  var FORMSPREE = "https://formspree.io/f/xjyblgzv";
+  var form = document.getElementById("demoForm");
+  var ok = document.getElementById("okBlock");
+  var err = document.getElementById("errMsg");
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    err.classList.add("hidden");
+    try {
+      var res = await fetch(FORMSPREE, { method: "POST", body: new FormData(form), headers: { "Accept": "application/json" } });
+      if (res.ok) { form.classList.add("hidden"); ok.classList.remove("hidden"); }
+      else err.classList.remove("hidden");
+    } catch (_) { err.classList.remove("hidden"); }
+  });
+})();
+</script>
+</body>
+</html>
