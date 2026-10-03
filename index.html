@@ -110,6 +110,43 @@
     .demo-form { transform:none !important; }
     .sec-pad { padding-left:20px !important; padding-right:20px !important; }
   }
+
+  /* How it works — hand-set numbered timeline */
+  .flow { position:relative; margin:0; padding:0; list-style:none; }
+  .flow::before { content:""; position:absolute; left:43px; top:26px; bottom:70px; width:2px;
+    background:linear-gradient(180deg,#D8C9AE 0%,#E2D8C6 72%,rgba(226,216,198,0) 100%); }
+  .step { position:relative; display:grid; grid-template-columns:88px minmax(0,1fr); gap:30px; align-items:start; padding:28px 0; }
+  .step-num { grid-column:1; width:88px; text-align:center; font-family:'Unbounded','Bricolage Grotesque',sans-serif;
+    font-weight:700; font-size:40px; line-height:1; letter-spacing:-0.05em; color:transparent;
+    -webkit-text-stroke:1.5px #CBB892; position:relative; z-index:1; background:#F5EFE4; padding:4px 0 12px; }
+  .step:first-child .step-num { -webkit-text-stroke-color:#C13F22; color:rgba(193,63,34,0.07); }
+  .step-main { grid-column:2; padding-top:3px; }
+  .step-main h3 { font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:700; font-size:clamp(21px,2vw,26px);
+    line-height:1.18; letter-spacing:-0.02em; margin:0 0 8px; color:#1B1A17; }
+  .step-main p { margin:0; font-size:17px; line-height:1.62; color:#4A453C; max-width:520px; }
+  .step-aside { margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+  .step .chip { background:#F0E7D8; border-radius:999px; padding:8px 14px; font-size:15px; color:#3D392F; }
+  .step .chip.gone { background:transparent; border:1px solid #D6C9B2; color:#9A9288; text-decoration:line-through; text-decoration-color:#CBB892; }
+  .step .chip.gone em { font-style:normal; text-decoration:none; color:#9A9288; margin-left:7px; }
+  .step-link { font-weight:600; font-size:16px; color:#C13F22; }
+  .step-link:hover { color:#1B1A17; }
+  .how2-foot { margin:40px 0 0 118px; display:flex; flex-wrap:wrap; align-items:center; gap:26px 44px; }
+  .swap-note { margin:0; max-width:440px; background:#FBF6EC; border:1px solid #E7D9C0; border-left:3px solid #C13F22;
+    border-radius:3px 14px 14px 3px; padding:15px 20px; transform:rotate(-0.7deg);
+    font-family:'Bricolage Grotesque',Georgia,sans-serif; font-size:16.5px; line-height:1.4; color:#1B1A17; }
+  .how2-stats { display:flex; gap:36px; }
+  .how2-stat .n { font-family:'Bricolage Grotesque',Georgia,sans-serif; font-weight:700; font-size:clamp(24px,2.2vw,32px); letter-spacing:-0.03em; line-height:1; color:#1B1A17; }
+  .how2-stat .n.accent { color:#C13F22; }
+  .how2-stat .l { margin-top:7px; font-size:14px; color:#7A7369; }
+  .step.reveal { opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1); }
+  .step.reveal.in { opacity:1; transform:none; }
+  @media (max-width:760px) {
+    .flow::before { left:22px; }
+    .step { grid-template-columns:46px minmax(0,1fr); gap:16px; padding:22px 0; }
+    .step-num { width:46px; font-size:29px; padding-bottom:8px; }
+    .how2-foot { margin-left:0; flex-direction:column; align-items:flex-start; gap:24px; }
+    .how2-stats { gap:28px; }
+  }
 </style>
 </head>
 <body>
@@ -160,63 +197,56 @@
     </div>
   </section>
 
-  <section id="how" style="max-width:1180px;margin:0 auto;padding:88px 32px 20px">
-    <div class="sec-grid" style="display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:56px;align-items:start;margin-bottom:48px">
+  <section id="how" style="max-width:1120px;margin:0 auto;padding:88px 32px">
+    <div style="max-width:640px;margin:0 0 42px">
       <h2 data-i18n="howTitle" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:clamp(30px,3.2vw,44px);line-height:1.05;letter-spacing:-0.025em;margin:0"></h2>
-      <div style="max-width:560px">
-        <p data-i18n="howLead" style="color:#4A453C;font-size:19px;margin:0 0 14px"></p>
-        <p data-i18n="howNote" style="margin:0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-size:18px;color:#C13F22"></p>
-      </div>
+      <p data-i18n="howLead" style="color:#4A453C;font-size:19px;line-height:1.55;margin:16px 0 0"></p>
     </div>
-    <div class="how-grid" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px">
 
-      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#1B1A17;border:1px solid #1B1A17;color:#F5EFE4">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#E8724F">01</span><span data-i18n="s1Label" style="font-size:13px;color:#8E877C;letter-spacing:0.04em;text-transform:uppercase"></span></div>
-        <h3 data-i18n="s1Title" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px;color:#FFF6EE"></h3>
-        <p data-i18n="s1Body" style="margin:0;font-size:17px;line-height:1.62;color:#CFC7BA"></p>
-      </div>
-
-      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#FBF6EC;border:1px solid #E2D8C6">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">02</span><span data-i18n="s2Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
-        <h3 data-i18n="s2Title" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
-        <p data-i18n="s2Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
-        <div style="margin-top:auto;display:flex;flex-wrap:wrap;gap:8px">
-          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@dubai.bites</span>
-          <span style="background:#F0E7D8;border-radius:999px;padding:8px 14px;font-size:15px">@brunch.lea</span>
-          <span style="background:#F5EFE4;border:1px dashed #D6C9B2;border-radius:999px;padding:8px 14px;font-size:15px;color:#9A9288">@promo.dxb — <span data-i18n="removed"></span></span>
+    <ol class="flow">
+      <li class="step">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-main">
+          <h3 data-i18n="s1Title"></h3>
+          <p data-i18n="s1Body"></p>
         </div>
-      </div>
-
-      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#F0E7D8;border:1px solid #E2D8C6">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">03</span><span data-i18n="s3Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
-        <h3 data-i18n="s3Title" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
-        <p data-i18n="s3Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
-        <div id="howSlots" style="margin-top:auto;display:flex;gap:8px;flex-wrap:wrap"></div>
-      </div>
-
-      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 3;background:#FBF6EC;border:1px solid #E2D8C6">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px"><span style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:700;font-size:14px;letter-spacing:0.06em;color:#C13F22">04</span><span data-i18n="s4Label" style="font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></span></div>
-        <h3 data-i18n="s4Title" style="font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:20px;line-height:1.34;letter-spacing:-0.02em;margin:0 0 12px"></h3>
-        <p data-i18n="s4Body" style="margin:0 0 18px;font-size:17px;line-height:1.62;color:#4A453C"></p>
-        <a href="#report" data-i18n="s4Link" style="margin-top:auto;font-weight:600;font-size:16px"></a>
-      </div>
-
-      <div class="how-card card" style="border-radius:20px;padding:30px;display:flex;flex-direction:column;grid-column:span 2;background:#C13F22;border:1px solid #C13F22;color:#FFF6EE;justify-content:center;gap:10px">
-        <span data-i18n="swapLabel" style="font-size:13px;color:#F6CDBD;letter-spacing:0.04em;text-transform:uppercase"></span>
-        <p data-i18n="swapTitle" style="margin:0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:19px;line-height:1.34;letter-spacing:-0.02em"></p>
-      </div>
-
-      <div class="how-card card stat-card" style="border-radius:20px;padding:30px;grid-column:span 4;background:#FBF6EC;border:1px solid #E2D8C6;display:flex;flex-direction:row;align-items:center;gap:26px;justify-content:space-between">
-        <div>
-          <p data-i18n="statLabel1" style="margin:0 0 8px;font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></p>
-          <p data-i18n="statValue1" style="margin:0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-0.03em"></p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-main">
+          <h3 data-i18n="s2Title"></h3>
+          <p data-i18n="s2Body"></p>
+          <div class="step-aside">
+            <span class="chip">@dubai.bites</span>
+            <span class="chip">@brunch.lea</span>
+            <span class="chip gone">@promo.dxb<em data-i18n="removed"></em></span>
+          </div>
         </div>
-        <div style="text-align:right;border-left:1px solid #E2D8C6;padding-left:26px;flex-shrink:0">
-          <p data-i18n="statLabel2" style="margin:0 0 8px;font-size:13px;color:#7A7369;letter-spacing:0.04em;text-transform:uppercase"></p>
-          <p data-i18n="statValue2" style="margin:0;font-family:'Bricolage Grotesque',Georgia,sans-serif;font-weight:600;font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-0.03em;color:#C13F22"></p>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-main">
+          <h3 data-i18n="s3Title"></h3>
+          <p data-i18n="s3Body"></p>
+          <div id="howSlots" class="step-aside"></div>
         </div>
-      </div>
+      </li>
+      <li class="step">
+        <div class="step-num" aria-hidden="true">04</div>
+        <div class="step-main">
+          <h3 data-i18n="s4Title"></h3>
+          <p data-i18n="s4Body"></p>
+          <div class="step-aside"><a href="#report" class="step-link" data-i18n="s4Link"></a></div>
+        </div>
+      </li>
+    </ol>
 
+    <div class="how2-foot">
+      <p class="swap-note" data-i18n="swapTitle"></p>
+      <div class="how2-stats">
+        <div class="how2-stat"><div class="n" data-i18n="statValue1"></div><div class="l" data-i18n="statLabel1"></div></div>
+        <div class="how2-stat"><div class="n accent" data-i18n="statValue2"></div><div class="l" data-i18n="statLabel2"></div></div>
+      </div>
     </div>
   </section>
 
@@ -412,9 +442,9 @@ const COPY = {
       { t: "Reach your audience through content", d: "Your future guests find you through people they already trust." }
     ],
     howTitle: "How it works",
-    howLead: "Four steps. Three are on us. You just approve the options in chat.",
+    howLead: "Four steps, and only the first one needs you. After that, the guests and the report just show up.",
     howNote: "Only step one needs you. Then you just watch.",
-    s1Label: "5-minute form", s1Title: "You fill one short form — once",
+    s1Label: "5-minute form", s1Title: "You fill one short form, once",
     s1Body: "Tell us your place, your food, the days bloggers can come, and your terms.",
     s2Label: "this month list", s2Title: "We pick bloggers and show you the list",
     s2Body: "Local people with a real audience. You can remove anyone.", removed: "removed",
@@ -422,9 +452,9 @@ const COPY = {
     s3Body: "Your team gets the list early. No five shoots on one day.",
     slots: ["Thu 12 · 7:40pm", "Sat 14 · breakfast", "Tue 17 · lunch", "+6"],
     s4Label: "end of month", s4Title: "We send one report",
-    s4Body: "What was posted and how many people saw it — one file, no chat screenshots.",
+    s4Body: "What was posted and how many people saw it. One file, no chat screenshots.",
     s4Link: "See an example →",
-    swapLabel: "a no-show is not your problem", swapTitle: "If someone does not come, we replace them the same month — free.",
+    swapLabel: "a no-show is not your problem", swapTitle: "If a blogger does not come, we bring in another one the same month, free.",
     statLabel1: "Your time a month", statValue1: "5 minutes",
     statLabel2: "Chats with bloggers", statValue2: "none",
     bandA: "Influencers advertise", bandLocal: "locally", bandB: "— reach grows", bandGlobal: "globally",
@@ -500,17 +530,17 @@ const COPY = {
       { t: "Полностью под ключ", d: "Подбор, переписка, расписание и отчёт — на нас. Вы просто открываете двери." }
     ],
     howTitle: "Как это устроено у нас",
-    howLead: "Четыре шага. Три из них — на нашей стороне, и мы не просим вас ничего согласовывать в чатах.",
-    howNote: "Единственный этап с вашим участием — дальше вы просто наблюдаете.",
-    s1Label: "бриф на 5 минут", s1Title: "Заполняете короткий бриф о заведении — один раз",
+    howLead: "Четыре шага, и только первый за вами. Дальше гости и отчёт приходят сами.",
+    howNote: "Единственный этап с вашим участием, дальше вы просто наблюдаете.",
+    s1Label: "бриф на 5 минут", s1Title: "Заполняете короткий бриф о заведении, один раз",
     s1Body: "Для эффективной работы нам необходимо узнать о вашем заведении, кухне, датах посещения ресторана для креаторов и условиях.",
     s2Label: "состав месяца", s2Title: "Собираем авторов и показываем вам список",
-    s2Body: "Из вашего города, с живой аудиторией. Кого-то вычеркнуть — нормально.", removed: "вычеркнули",
+    s2Body: "Из вашего города, с живой аудиторией. Любого можно вычеркнуть.", removed: "вычеркнули",
     s3Label: "расписание", s3Title: "Разводим визиты по дням",
     s3Body: "Хостес получает список заранее. Кухня не встаёт в очередь из пяти съёмок в пятницу.",
     slots: ["чт 12 · 19:40", "сб 14 · завтрак", "вт 17 · обед", "+6"],
     s4Label: "конец месяца", s4Title: "Присылаем один отчёт",
-    s4Body: "Что вышло, сколько людей увидело, что сохраняли — одним файлом, без пересылки скриншотов.",
+    s4Body: "Что вышло, сколько людей увидело, что сохраняли. Один файл, без пересылки скриншотов.",
     s4Link: "Посмотреть, как он выглядит →",
     swapLabel: "не пришёл — не ваша проблема", swapTitle: "Меняем автора в том же месяце, без доплаты",
     statLabel1: "Ваше участие за весь месяц", statValue1: "5 минут на бриф",
@@ -730,5 +760,27 @@ function setLang(l) {
   <a class="wa" href="https://wa.me/79053351287?text=Hi!%20I'd%20like%20to%20book%20a%20demo%20for%20my%20venue" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
   <a class="tg" href="https://t.me/vu_alexey" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
 </div>
+
+<script>
+/* How it works: gentle staggered reveal. Content is visible by default;
+   only JS + motion-allowed opts into the animation, so no-JS / reduced-motion
+   users always see every step. */
+(function () {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var steps = document.querySelectorAll("#how .step");
+  if (!steps.length) return;
+  steps.forEach(function (s) { s.classList.add("reveal"); });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      setTimeout(function () { el.classList.add("in"); }, el.getAttribute("data-i") * 90);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.18, rootMargin: "0px 0px -8% 0px" });
+  steps.forEach(function (s, i) { s.setAttribute("data-i", i % 4); io.observe(s); });
+})();
+</script>
 </body>
 </html>
